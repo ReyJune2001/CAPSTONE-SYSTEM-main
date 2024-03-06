@@ -828,18 +828,18 @@ if (isset($_POST['submit'])) {
                                     <br><br>
                                     <label style="margin-left:50px;">Paint:</label>
                                     <input type="text" style="text-align: center;" class="input1" name="paintYield"
-                                        autocomplete="off" value="<?php echo $paintYield; ?>" required>
+                                        autocomplete="off" value="<?php echo $paintYield; ?>">
                                     <br>
                                     <label style="margin-left:35px;">Acetate:</label>
                                     <input type="text" style="text-align: center;" class="input1" name="acetateYield"
-                                        autocomplete="off" value="<?php echo $acetateYield; ?>" required>
+                                        autocomplete="off" value="<?php echo $acetateYield; ?>">
                                     <br>
                                 </div>
                                 <br><br>
                                 <div class="remarks">
                                     <label style="margin-left:28px;">Remarks:</label>
                                     <input type="text" style="height:60px; text-align: center;" class="input1" name="remarks"
-                                        autocomplete="off" value="<?php echo $remarks; ?>" required>
+                                        autocomplete="off" value="<?php echo $remarks; ?>">
 
                                 </div>
                             </aside>

@@ -29,7 +29,7 @@ $EndingpaintRatio = isset($_POST['EndingpaintRatio']) ? $_POST['EndingpaintRatio
 $EndingacetateRatio = isset($_POST['EndingacetateRatio']) ? $_POST['EndingacetateRatio'] : 0;
 
 // Fetch the initialALiter,endingALiter,initialPLiter,endingPLiter,values from the database
-$sql = "SELECT initialALiter, endingALiter, initialPLiter, endingPLiter, Initialvolume, height , Endingvolume, Endingheight FROM tbl_entry";
+$sql = "SELECT initialALiter, endingALiter, initialPLiter, endingPLiter, Initialvolume, Endingvolume FROM tbl_entry";
 $result = mysqli_query($con, $sql);
 
 // Check if the query was successful
@@ -48,11 +48,9 @@ $endingALiter = $row['endingALiter'];
 $initialPLiter = $row['initialPLiter'];
 $endingPLiter = $row['endingPLiter'];
 $Initialvolume = $row['Initialvolume'];
-$height = $row['height'];
 $pi = 3.1416;
 $conversionFactor = 0.0163871;
 $Endingvolume = $row['Endingvolume'];
-$Endingheight = $row['Endingheight'];
 
 
 // Calculate initial volume
@@ -134,6 +132,5 @@ if ($quantity != 0 && $roundedTotalPLiter != 0) {
 // Return the calculated Acetate and Paint Yields as JSON
 echo json_encode(['acetateYield' => $roundedAcetateYield, 'paintYield' => $roundedPaintYield]);
 
-// Close database connection
-mysqli_close($con);
+
 ?>

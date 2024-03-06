@@ -793,15 +793,15 @@ if (isset($_POST['update'])) {
                                 <div class="form-column">
                                     <label style="font-weight:bold; margin-left:48px;">Date:</label>
                                     <input type="date" style="text-align: center;" class="input1" name="date"
-                                        autocomplete="off" value="<?php echo $date; ?>" required>
+                                        autocomplete="off" value="<?php echo $date; ?>">
                                     <label style="margin-left:75px;">Diameter:</label>
-                                    <input type="number" style="text-align: center;" class="input1" id="diameter" name="diameter"
-                                        autocomplete="off" value="<?php echo $diameter; ?>" required>
+                                    <input type="number" style="text-align: center;" class="input1" id="diameter"
+                                        name="diameter" min="0" step="any" autocomplete="off" value="<?php echo $diameter; ?>">
                                 </div>
 
                                 <div class="form-column">
                                     <label style="margin-left:10px;">Paint Color:</label>
-                                    <select name="paint_color" style="text-align: center;" class="selector1" required>
+                                    <select name="paint_color" style="text-align: center;" class="selector1">
                                         <option value="">------ Select ------</option>
                                         <option value="Royal Blue" <?php if ($paint_color == 'Royal Blue')
                                             echo 'selected'; ?>>Royal Blue</option>
@@ -831,13 +831,13 @@ if (isset($_POST['update'])) {
                                             echo 'selected'; ?>>Jade Green</option>
                                     </select>
                                     <label style="margin-left:90px;">Height:</label>
-                                    <input type="number" style="text-align: center;" class="input1" id="height" name="height"
-                                        autocomplete="off" value="<?php echo $height; ?>" required>
+                                    <input type="number" style="text-align: center;" class="input1" id="height"
+                                        name="height" min="0" step="any" autocomplete="off" value="<?php echo $height; ?>">
                                 </div>
 
                                 <div class="form-column">
                                     <label style="margin-left:26px;">Supplier:</label>
-                                    <select name="supplier_name" style="text-align: center;" class="selector1" required>
+                                    <select name="supplier_name" style="text-align: center;" class="selector1">
                                         <option value="">------ Select ------</option>
                                         <option value="Nippon" <?php if ($supplier_name == 'Nippon')
                                             echo 'selected'; ?>>
@@ -852,19 +852,21 @@ if (isset($_POST['update'])) {
                                             Century</option>
                                     </select>
                                     <label style="margin-left:67px;">Paint ratio:</label>
-                                    <input type="number" style="text-align: center;" class="input1" id="paintRatio" name="paintRatio"
-                                        autocomplete="off" value="<?php echo $paintRatio; ?>" required>
+                                    <input type="number" style="text-align: center;" class="input1" id="paintRatio"
+                                        name="paintRatio" min="0" step="any" autocomplete="off" value="<?php echo $paintRatio; ?>"
+                                        >
 
                                 </div>
 
                                 <div class="form-column">
                                     <label style="margin-left:20px;">Batch No:</label>
-                                    <input type="number" style="text-align: center;" class="input1" name="batchNumber"
-                                        autocomplete="off" value="<?php echo $batchNumber; ?>" required>
+                                    <input type="number" style="text-align: center;" class="input1" name="batchNumber" min="0" step="any"
+                                        autocomplete="off" value="<?php echo $batchNumber; ?>">
 
                                     <label style="margin-left:50px;">Acetate ratio:</label>
-                                    <input type="number" style="text-align: center;" class="input1" id="acetateRatio" name="acetateRatio"
-                                        autocomplete="off" value="<?php echo $acetateRatio; ?>" required>
+                                    <input type="number" style="text-align: center;" class="input1" id="acetateRatio"
+                                        name="acetateRatio" min="0" step="any" autocomplete="off" value="<?php echo $acetateRatio; ?>"
+                                        >
                                 </div>
                                 <br>
                                 <div class="newpaint">
@@ -878,7 +880,7 @@ if (isset($_POST['update'])) {
 
                                     <label style="margin-left:40px;">Supplier:</label>
                                     <select name="newSupplier_name" style="text-align: center;" class="selector2"
-                                        required>
+                                        min="0" step="any" >
                                         <option value="">------ Select ------</option>
                                         <option value="Nippon" <?php if ($newSupplier_name == 'Nippon')
                                             echo 'selected'; ?>>Nippon</option>
@@ -894,21 +896,22 @@ if (isset($_POST['update'])) {
                                         autocomplete="off" value="<?php echo $customer_name; ?>" required>
                                     <br>
                                     <label style="margin-left:38px;">Paint (L):</label>
-                                    <input type="number" style="text-align: center;" class="input2" id="NewpaintL" name="NewpaintL"
-                                        autocomplete="off" value="<?php echo $NewpaintL; ?>" required>
+                                    <input type="number" style="text-align: center;" class="input2" id="NewpaintL"
+                                        name="NewpaintL" autocomplete="off" value="<?php echo $NewpaintL; ?>">
                                     <label style="margin-left:71px;">Quantity:</label>
-                                    <input type="number" style="text-align: center;" class="input2" id="quantity" name="quantity"
-                                        autocomplete="off" value="<?php echo $quantity; ?>" required>
+                                    <input type="number" style="text-align: center;" class="input2" id="quantity"
+                                        name="quantity" min="0" step="any" autocomplete="off" value="<?php echo $quantity; ?>" >
                                     <br>
                                     <label style="margin-left:22px;">Acetate (L):</label>
-                                    <input type="number" style="text-align: center;" class="input2" id="NewacetateL" name="NewacetateL"
-                                        autocomplete="off" value="<?php echo $NewacetateL; ?>" required>
+                                    <input type="number" style="text-align: center;" class="input2" id="NewacetateL"
+                                        name="NewacetateL" min="0" step="any" autocomplete="off" value="<?php echo $NewacetateL; ?>"
+                                        >
                                     <br>
 
                                     <label>Spay Viscosity:</label>
                                     <input type="number" style="text-align: center;" class="input2" id=""
-                                        name="sprayViscosity" autocomplete="off" value="<?php echo $sprayViscosity; ?>"
-                                        required>
+                                        name="sprayViscosity" min="0" step="any"autocomplete="off" value="<?php echo $sprayViscosity; ?>"
+                                        >
                                     <br>
                                 </div>
                             </aside>
@@ -920,23 +923,26 @@ if (isset($_POST['update'])) {
                                 <br><br>
 
                                 <label style="margin-left:25px;">Diameter:</label>
-                                <input type="number" style="text-align: center;" class="input1" id="Endingdiameter" name="Endingdiameter"
-                                    autocomplete="off" value="<?php echo $Endingdiameter; ?>" required>
+                                <input type="number" style="text-align: center;" class="input1" id="Endingdiameter"
+                                    name="Endingdiameter" min="0" step="any" autocomplete="off" value="<?php echo $Endingdiameter; ?>"
+                                >
                                 <br>
 
                                 <label style="margin-left:39px;">Height:</label>
-                                <input type="number" style="text-align: center;" class="input1" id="Endingheight" name="Endingheight"
-                                    autocomplete="off" value="<?php echo $Endingheight; ?>" required>
+                                <input type="number" style="text-align: center;" class="input1" id="Endingheight"
+                                    name="Endingheight" min="0" step="any" autocomplete="off" value="<?php echo $Endingheight; ?>"
+                                >
                                 <br>
 
                                 <label style="margin-left:18px;">Paint ratio:</label>
-                                <input type="number" style="text-align: center;" class="input1" id="EndingpaintRatio" name="EndingpaintRatio"
-                                    autocomplete="off" value="<?php echo $EndingpaintRatio; ?>" required>
+                                <input type="number" style="text-align: center;" class="input1" id="EndingpaintRatio"
+                                    name="EndingpaintRatio" min="0" step="any" autocomplete="off" value="<?php echo $EndingpaintRatio; ?>"
+                                    >
                                 <br>
                                 <label>Acetate ratio:</label>
                                 <input type="number" style="text-align: center;" class="input1" id="EndingacetateRatio"
-                                    name="EndingacetateRatio" autocomplete="off"
-                                    value="<?php echo $EndingacetateRatio; ?>" required>
+                                    name="EndingacetateRatio" min="0" step="any" autocomplete="off"
+                                    value="<?php echo $EndingacetateRatio; ?>">
                                 <br><br>
 
 
@@ -946,19 +952,21 @@ if (isset($_POST['update'])) {
 
                                     <br><br>
                                     <label style="margin-left:50px;">Paint:</label>
-                                    <input type="number" style="text-align: center;" class="input1" id="paintYield" name="paintYield"
-                                        autocomplete="off" value="<?php echo $paintYield; ?>" required>
+                                    <input type="number" style="text-align: center;" class="input1" id="paintYield"
+                                        name="paintYield" min="0" step="any" autocomplete="off"
+                                        value="<?php echo $paintYield; ?>">
                                     <br>
                                     <label style="margin-left:35px;">Acetate:</label>
-                                    <input type="number" style="text-align: center;" class="input1" id="acetateYield" name="acetateYield"
-                                        autocomplete="off" value="<?php echo $acetateYield; ?>" required>
+                                    <input type="number" style="text-align: center;" class="input1" id="acetateYield"
+                                        name="acetateYield" min="0" step="any" autocomplete="off"
+                                        value="<?php echo $acetateYield; ?>">
                                     <br>
                                 </div>
                                 <br><br>
                                 <div class="remarks">
                                     <label style="margin-left:28px;">Remarks:</label>
                                     <input type="text" style="height:60px; text-align: center;" class="input1"
-                                        name="remarks" autocomplete="off" value="<?php echo $remarks; ?>" required>
+                                        name="remarks" autocomplete="off" value="<?php echo $remarks; ?>">
 
                                 </div>
                             </aside>
@@ -1074,56 +1082,38 @@ if (isset($_POST['update'])) {
 
     <!--FOR REAL-TIME DATA OF YIELD-->
     <script>
-    // Add event listener to input fields for acetate yield
-    document.querySelectorAll('input[name="NewacetateL"], input[name="quantity"]').forEach(function(input) {
-        input.addEventListener('input', function() {
-            updateYield();
+        document.addEventListener('DOMContentLoaded', function () {
+            // Add event listener to input fields for new paint and acetate liters
+            ['NewpaintL', 'NewacetateL', 'quantity'].forEach(function (fieldName) {
+                document.querySelector(`input[name="${fieldName}"]`).addEventListener('input', updateYield);
+            });
+
+            // Add event listener to input fields that affect yield calculations
+            ['diameter', 'height', 'paintRatio', 'acetateRatio'].forEach(function (fieldName) {
+                document.querySelector(`input[name="${fieldName}"]`).addEventListener('input', updateYield);
+            });
+
+            // Add event listener to input fields that affect yield calculations
+            ['Endingdiameter', 'Endingheight', 'EndingpaintRatio', 'EndingacetateRatio'].forEach(function (fieldName) {
+                document.querySelector(`input[name="${fieldName}"]`).addEventListener('input', updateYield);
+            });
         });
-    });
+        
 
-    // Add event listener to input fields for paint yield
-    document.querySelectorAll('input[name="NewpaintL"], input[name="quantity"]').forEach(function(input) {
-        input.addEventListener('input', function() {
-            updateYield();
-        });
-    });
-
-    // Add event listener to input fields for acetate and paint yield when diameter, height, ratios change
-    document.querySelectorAll('input[name="diameter"], input[name="height"], input[name="paintRatio"], input[name="acetateRatio"], input[name="Endingdiameter"], input[name="Endingheight"], input[name="EndingpaintRatio"], input[name="EndingacetateRatio"]').forEach(function(input) {
-        input.addEventListener('input', function() {
-            updateYield();
-        });
-    });
-
-    function updateYield() {
-        var formData = new FormData(document.querySelector('form'));
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "calculate_yield.php", true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                var response = JSON.parse(xhr.responseText);
-                document.querySelector('input[name="paintYield"]').value = response.paintYield;
-                document.querySelector('input[name="acetateYield"]').value = response.acetateYield;
-            }
-        };
-        xhr.send(formData);
-    }
-</script>
-
-
-    <!-- FOR clickable image dropdown SCRIPT-->
-    <script>
-        function handleDropdownChange(select) {
-            var selectedValue = select.value;
-
-            if (selectedValue === "edit_profile") {
-                // Redirect to the edit profile page
-                window.location.href = "profile.php"; // Change the URL accordingly
-            } else if (selectedValue === "logout") {
-                // Redirect to the logout page
-                window.location.href = "logout.php"; // Change the URL accordingly
-            }
+        function updateYield() {
+            var formData = new FormData(document.querySelector('form'));
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "calculate_yield.php", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    document.querySelector('input[name="paintYield"]').value = response.paintYield;
+                    document.querySelector('input[name="acetateYield"]').value = response.acetateYield;
+                }
+            };
+            xhr.send(formData);
         }
+
     </script>
 
 
