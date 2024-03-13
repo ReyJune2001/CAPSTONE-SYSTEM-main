@@ -564,9 +564,14 @@ if (!$result) {
         .dataTables_wrapper .dataTables_filter input {
             border: 1px solid #aaa;
             border-radius: 3px;
-            padding: 5px;
+            padding-bottom: 19px;
+            padding-top: 19px;
+            width: 154px;
+
             background-color: white;
-            margin-left: 3px;
+            margin-left: 10px;
+
+
         }
 
         /*FOR FILTER BAR */
@@ -648,11 +653,19 @@ if (!$result) {
             /* Set the height */
 
         }
-        .ms-select-all label span,li label span {
-  display: inline-block;
-  width: 100px; /* Adjust width as needed */
-  text-align: left;
-}
+
+        .ms-select-all label span,
+        li label span {
+            display: inline-block;
+            width: 100px;
+            /* Adjust width as needed */
+            text-align: left;
+
+        }
+
+        button.ms-choice {
+            height: 28px;
+        }
 
 
         /*FOR SYSTEM RESPONSIVE */
@@ -703,6 +716,36 @@ if (!$result) {
                 <!--Filter bar-->
                 <div class="col-md-8">
                     <div class="form-group">
+                        <!--columns to Display-->
+
+                        <label>Show / Hide columns:</label>
+
+                        <select name="toggle_column" id="toggle_column" multiple>
+                            <option value="0">Date</option>
+                            <option value="1">Paint Color</option>
+                            <option value="2">Supplier</option>
+                            <option value="3">Batch Number</option>
+                            <option value="4">Pi</option>
+                            <option value="5">Diameter</option>
+                            <option value="6">Height</option>
+                            <option value="7">Conversion Factor</option>
+                            <option value="8">Volume</option>
+                            <option value="9">Paint Ratio</option>
+                            <option value="10">Acetate Ratio</option>
+                            <option value="11">Paint (L)</option>
+                            <option value="12">Acetate (L)</option>
+                            <option value="13">Pi</option>
+                            <option value="14">Diameter</option>
+                            <option value="15">Height</option>
+                            <option value="16">Conversion Factor</option>
+                            <option value="17">Volume</option>
+                            <option value="18">Paint Ratio</option>
+                            <option value="19">Acetate Ratio</option>
+                            <option value="20">Paint</option>
+                            <option value="21">Acetate</option>
+                            <option value="22">Operation</option>
+                        </select>
+                        
                         <label style="margin-left:20%;">From date:</label>
                         <input type="date" style="text-align: center;" class="filterfield" id="min" name="min"
                             autocomplete="off" required>
@@ -712,35 +755,6 @@ if (!$result) {
                             autocomplete="off" required>
 
                     </div>
-                    <!--columns to Display-->
-
-                    <select name="toggle_column" id="toggle_column" multiple>
-                        <option value="0">Date</option>
-                        <option value="1">Paint Color</option>
-                        <option value="2">Supplier</option>
-                        <option value="3">Batch Number</option>
-                        <option value="4">Pi</option>
-                        <option value="5">Diameter</option>
-                        <option value="6">Height</option>
-                        <option value="7">Conversion Factor</option>
-                        <option value="8">Volume</option>
-                        <option value="9">Paint Ratio</option>
-                        <option value="10">Acetate Ratio</option>
-                        <option value="11">Paint (L)</option>
-                        <option value="12">Acetate (L)</option>
-                        <option value="13">Pi</option>
-                        <option value="14">Diameter</option>
-                        <option value="15">Height</option>
-                        <option value="16">Conversion Factor</option>
-                        <option value="17">Volume</option>
-                        <option value="18">Paint Ratio</option>
-                        <option value="19">Acetate Ratio</option>
-                        <option value="20">Paint</option>
-                        <option value="21">Acetate</option>
-                        <option value="22">Operation</option>
-                    </select>
-
-
                 </div>
 
 
@@ -1040,7 +1054,7 @@ if (!$result) {
                 scrollY: true,
                 dom: 'Bfrtip',
                 buttons: [
-                    'copy', 'csv', 'excel', 'print',
+                    'copy', 'excel', 'print',
                     {
                         extend: 'pdf',
                         orientation: 'landscape',
@@ -1049,9 +1063,11 @@ if (!$result) {
                 ]
             });
 
+
+
             // Initialize multiple-select plugin
             $('#toggle_column').multipleSelect({
-                width: 200,
+                width: 180,
                 onClick: function () {
                     var selectedItems = $('#toggle_column').multipleSelect("getSelects");
                     hideAllColumns();
