@@ -46,17 +46,20 @@ if (!$result) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.5.1/css/dataTables.dateTime.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
     <title>Paint-Acetate Yield Monitoring</title>
-    
+
     <style>
         * {
 
@@ -549,27 +552,59 @@ if (!$result) {
 
         }
 
-    /*FOR EXPORT BUTTONS */
-    div.dt-buttons > .dt-button,
-    div.dt-buttons > div.dt-button-split .dt-button {
-    position: relative;
-    display: inline-block;
-    box-sizing: border-box;
-    margin-left: .167em;
-    margin-right: .167em;
-    margin-bottom: .333em;
-    padding: .5em 1em;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    border-radius: 2px;
-    cursor: pointer;
-    font-size: .88em;
-    line-height: 1.6em;
-    color: black;
-    white-space: nowrap;
-    overflow: hidden;
-    background: white;
-    transition: background-color 0.3s; /* Add transition for smooth hover effect */
-}
+        /*FOR EXPORT BUTTONS */
+        div.dt-buttons>.dt-button,
+        div.dt-buttons>div.dt-button-split .dt-button {
+            position: relative;
+            display: inline-block;
+            box-sizing: border-box;
+            margin-left: .167em;
+            margin-right: .167em;
+            margin-bottom: .333em;
+            padding: .5em 1em;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            border-radius: 2px;
+            cursor: pointer;
+            font-size: .88em;
+            line-height: 1.6em;
+            color: black;
+            white-space: nowrap;
+            overflow: hidden;
+            background: white;
+            transition: background-color 0.3s;
+            /* Add transition for smooth hover effect */
+        }
+
+        /* FOR CLOCK */
+
+        .clockcontainer {
+            width: 295px;
+            height: 180px;
+            position: absolute;
+            top: 12%;
+            left: 80%;
+            transform: translate(-50%, -50%);
+
+
+        }
+
+        .clock {
+
+            color: black;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .clock span {
+            font-size: 22px;
+            width: 30px;
+            display: inline-block;
+            text-align: center;
+            position: relative;
+        }
 
 
         /*FOR SYSTEM RESPONSIVE */
@@ -579,7 +614,22 @@ if (!$result) {
 <body>
     <div class="wrapper">
         <div class="section">
+
             <div class="admin_profile">
+
+                <!--FOR CLOCK-->
+                <div class="clockcontainer">
+                    <div class="clock">
+                        <span id="hrs"></span>
+                        <span>:</span>
+                        <span id="min"></span>
+                        <span>:</span>
+                        <span id="sec"></span>
+                        <span id="ampm"></span>
+
+                    </div>
+                </div>
+                
                 <img src="uploaded_image/<?php echo $Profile_image; ?>" class="img-admin" id="image">
 
                 <select class="dropdown" required onchange="handleDropdownChange(this)">
@@ -711,18 +761,18 @@ if (!$result) {
 
                             while ($row = mysqli_fetch_assoc($result)) {
 
-                                 // Extract values from the row
-                                 
-                                 $initialPLiter = $row['initialPLiter'];
-                                 $NewpaintL = $row['NewpaintL'];
-                                 $endingPLiter = $row['endingPLiter'];
-                                 $initialALiter = $row['initialALiter'];
-                                 $NewacetateL = $row['NewacetateL'];
-                                 $endingALiter = $row['endingALiter'];
-                                 $quantity = $row['quantity'];
+                                // Extract values from the row
+                            
+                                $initialPLiter = $row['initialPLiter'];
+                                $NewpaintL = $row['NewpaintL'];
+                                $endingPLiter = $row['endingPLiter'];
+                                $initialALiter = $row['initialALiter'];
+                                $NewacetateL = $row['NewacetateL'];
+                                $endingALiter = $row['endingALiter'];
+                                $quantity = $row['quantity'];
 
 
-                                 // Calculate total Paint Liter
+                                // Calculate total Paint Liter
                                 $totalPLiter = ($initialPLiter + $NewpaintL - $endingPLiter);
                                 // Round off the total Paint Liter to the nearest hundredth
                                 $roundedTotalPLiter = round($totalPLiter, 2);
@@ -731,30 +781,30 @@ if (!$result) {
                                 mysqli_query($con, $insertQuery);
 
 
-                                 // Calculate total Acetate Liter
-                                 $totalALiter = ($initialALiter + $NewacetateL - $endingALiter);
-                                 // Round off the total Acetate Liter to the nearest hundredth
-                                 $roundedTotalALiter = round($totalALiter, 2);
-                                 // Insert the total Acetate Liter value into the database
-                                 $insertQuery = "UPDATE tbl_entry SET totalALiter = $roundedTotalALiter WHERE EntryID = {$row['EntryID']}";
-                                 mysqli_query($con, $insertQuery);
+                                // Calculate total Acetate Liter
+                                $totalALiter = ($initialALiter + $NewacetateL - $endingALiter);
+                                // Round off the total Acetate Liter to the nearest hundredth
+                                $roundedTotalALiter = round($totalALiter, 2);
+                                // Insert the total Acetate Liter value into the database
+                                $insertQuery = "UPDATE tbl_entry SET totalALiter = $roundedTotalALiter WHERE EntryID = {$row['EntryID']}";
+                                mysqli_query($con, $insertQuery);
 
 
-                                 // Calculate the Paint Yield
-                                 $PaintYield = ( $quantity / $roundedTotalPLiter);
-                                 // Round off the Paint Yield to the nearest hundredth
-                                 $roundedPaintYield = round($PaintYield, 2);
-                                 // Insert the Paint Yield value into the database
-                                 $insertQuery = "UPDATE tbl_entry SET paintYield = $roundedPaintYield WHERE EntryID = {$row['EntryID']}";
-                                 mysqli_query($con, $insertQuery);
+                                // Calculate the Paint Yield
+                                $PaintYield = ($quantity / $roundedTotalPLiter);
+                                // Round off the Paint Yield to the nearest hundredth
+                                $roundedPaintYield = round($PaintYield, 2);
+                                // Insert the Paint Yield value into the database
+                                $insertQuery = "UPDATE tbl_entry SET paintYield = $roundedPaintYield WHERE EntryID = {$row['EntryID']}";
+                                mysqli_query($con, $insertQuery);
 
-                                 // Calculate the Acetate Yield
-                                 $AcetateYield = ( $quantity / $roundedTotalALiter);
-                                 // Round off the Acetate Yield to the nearest hundredth
-                                 $roundedAcetateYield = round($AcetateYield, 2);
-                                 // Insert the Acetate Yield value into the database
-                                 $insertQuery = "UPDATE tbl_entry SET acetateYield = $roundedAcetateYield WHERE EntryID = {$row['EntryID']}";
-                                 mysqli_query($con, $insertQuery);
+                                // Calculate the Acetate Yield
+                                $AcetateYield = ($quantity / $roundedTotalALiter);
+                                // Round off the Acetate Yield to the nearest hundredth
+                                $roundedAcetateYield = round($AcetateYield, 2);
+                                // Insert the Acetate Yield value into the database
+                                $insertQuery = "UPDATE tbl_entry SET acetateYield = $roundedAcetateYield WHERE EntryID = {$row['EntryID']}";
+                                mysqli_query($con, $insertQuery);
 
 
                                 echo "<tr class='edit-row' data-entry-id='{$row['EntryID']}' data-date='{$row['date']}' data-paint-color='{$row['paint_color']}' data-supplier-name='{$row['supplier_name']}' data-batch-number='{$row['batchNumber']}' data-new-supplier-name='{$row['newSupplier_name']}' data-new-paint-l='{$row['NewpaintL']}' data-new-acetate-l='{$row['NewacetateL']}' data-spray-viscosity='{$row['sprayViscosity']}' data-customer-name='{$row['customer_name']}' data-quantity='{$row['quantity']}' data-paint-yield='{$row['paintYield']}' data-acetate-yield='{$row['acetateYield']}' data-remarks='{$row['remarks']}'>";
@@ -846,19 +896,19 @@ if (!$result) {
                     </li>
                     <li>
                         <a href="dataEntry.php">
-                            <span class="icon"><i class="fa-regular fa-keyboard"></i></span>
-                            <span class="item">Data Entry</span>
+                            <span class="icon"><i class="fa-solid fa-table-cells-large"></i></span>
+                            <span class="item">Dashboard</span>
                         </a>
                     </li>
                     <li>
                         <a href="volume.php">
-                            <span class="icon"><i class="fa-solid fa-chart-simple"></i></span>
+                            <span class="icon"><i class="fa-solid fa-flask-vial"></i></span>
                             <span class="item">Volume</span>
                         </a>
                     </li>
                     <li>
                         <a href="monitoring.php" class="active">
-                            <span class="icon"><i class="fas fa-desktop"></i></span>
+                            <span class="icon"><i class="fa-solid fa-chart-column"></i></span>
                             <span class="item">Monitoring</span>
                         </a>
                     </li>
@@ -870,19 +920,6 @@ if (!$result) {
                     </li>
 
                 </ul>
-
-                <!--FOR CLOCK-->
-                <div class="clockcontainer">
-                    <div class="clock">
-                        <span id="hrs"></span>
-                        <span>:</span>
-                        <span id="min"></span>
-                        <span>:</span>
-                        <span id="sec"></span>
-                        <span id="ampm"></span>
-
-                    </div>
-                </div>
 
             </div>
         </div>
@@ -954,8 +991,10 @@ if (!$result) {
         </div>
     </div>
 
-      <!-- Bootstrap JS -->
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
@@ -965,7 +1004,9 @@ if (!$result) {
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
 
     <!-- DataTables Buttons -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" integrity="sha512-XMVd28F1oH/O71fzwBnV7HucLxVwtxf26XV8P4wPk26EDxuGZ91N8bsOttmnomcCD3CS5ZMRL50H0GgOHvegtg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"
+        integrity="sha512-XMVd28F1oH/O71fzwBnV7HucLxVwtxf26XV8P4wPk26EDxuGZ91N8bsOttmnomcCD3CS5ZMRL50H0GgOHvegtg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
@@ -993,7 +1034,31 @@ if (!$result) {
         });
     </script>
 
+    <!--FOR CLOCK SCRIPT-->
+    <script>
+        let hrs = document.getElementById("hrs");
+        let min = document.getElementById("min");
+        let sec = document.getElementById("sec");
+        let ampm = document.getElementById("ampm");
 
+        setInterval(() => {
+            let currentTime = new Date();
+            let hours = currentTime.getHours();
+            let period = "AM";
+
+            if (hours >= 12) {
+                period = "PM";
+                if (hours > 12) {
+                    hours -= 12;
+                }
+            }
+
+            hrs.innerHTML = (hours < 10 ? "0" : '') + hours;
+            min.innerHTML = (currentTime.getMinutes() < 10 ? "0" : '') + currentTime.getMinutes();
+            sec.innerHTML = (currentTime.getSeconds() < 10 ? "0" : '') + currentTime.getSeconds();
+            ampm.innerHTML = period;
+        }, 1000)
+    </script>
 
     <!-- DATE FILTER RANGE -->
     <script>

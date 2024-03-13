@@ -520,14 +520,16 @@ $Profile_image = $row['Profile_image'];
             width: 295px;
             height: 180px;
             position: absolute;
-            top: 95%;
+            top: 12%;
+            left: 80%;
+            transform: translate(-50%, -50%);
 
 
         }
 
         .clock {
 
-            color: white;
+            color: black;
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -536,7 +538,7 @@ $Profile_image = $row['Profile_image'];
         }
 
         .clock span {
-            font-size: 20px;
+            font-size: 22px;
             width: 30px;
             display: inline-block;
             text-align: center;
@@ -550,7 +552,21 @@ $Profile_image = $row['Profile_image'];
 <body>
     <div class="wrapper">
         <div class="section">
+            
             <div class="admin_profile">
+                <!--FOR CLOCK-->
+            <div class="clockcontainer">
+                <div class="clock">
+                    <span id="hrs"></span>
+                    <span>:</span>
+                    <span id="min"></span>
+                    <span>:</span>
+                    <span id="sec"></span>
+                    <span id="ampm"></span>
+
+                </div>
+            </div>
+            
                 <img src="uploaded_image/<?php echo $Profile_image; ?>" class="img-admin" id="image">
 
                 <select class="dropdown" required onchange="handleDropdownChange(this)">
@@ -600,19 +616,19 @@ $Profile_image = $row['Profile_image'];
                     </li>
                     <li>
                         <a href="dataEntry.php">
-                            <span class="icon"><i class="fa-regular fa-keyboard"></i></span>
-                            <span class="item">Data Entry</span>
+                            <span class="icon"><i class="fa-solid fa-table-cells-large"></i></span>
+                            <span class="item">Dashboard</span>
                         </a>
                     </li>
                     <li>
                         <a href="volume.php">
-                            <span class="icon"><i class="fa-solid fa-chart-simple"></i></span>
+                            <span class="icon"><i class="fa-solid fa-flask-vial"></i></span>
                             <span class="item">Volume</span>
                         </a>
                     </li>
                     <li>
                         <a href="monitoring.php">
-                            <span class="icon"><i class="fas fa-desktop"></i></span>
+                            <span class="icon"><i class="fa-solid fa-chart-column"></i></span>
                             <span class="item">Monitoring</span>
                         </a>
                     </li>

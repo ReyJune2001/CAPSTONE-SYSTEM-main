@@ -106,7 +106,7 @@ if (isset($_POST['submit'])) {
     // Get the EntryID of the newly inserted Entry
     $EntryID = mysqli_insert_id($con);
 
-    
+
     if ($result) {
         $updateSuccess = true;
     } else {
@@ -470,25 +470,25 @@ if (isset($_POST['submit'])) {
 
         .left {
 
-            background-color:rgb(31, 102, 234);
+            background-color: rgb(31, 102, 234);
             padding: 3em 0 3em 0;
             flex: 1 1 100px;
             margin-left: auto;
             text-align: center;
             padding-left: 8%;
-            
+
 
 
 
         }
-      
+
 
         .main2 {
             display: flex;
             flex: 1;
             padding-top: 2%;
             padding-left: 2%;
-            padding-right:2%;
+            padding-right: 2%;
             height: 100%;
 
         }
@@ -508,7 +508,7 @@ if (isset($_POST['submit'])) {
             padding: 2em 0 2em 0;
             text-align: center;
             height: 100%;
-            
+
         }
 
 
@@ -606,14 +606,16 @@ if (isset($_POST['submit'])) {
             width: 295px;
             height: 180px;
             position: absolute;
-            top: 95%;
+            top: 12%;
+            left: 80%;
+            transform: translate(-50%, -50%);
 
 
         }
 
         .clock {
 
-            color: white;
+            color: black;
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -622,7 +624,7 @@ if (isset($_POST['submit'])) {
         }
 
         .clock span {
-            font-size: 20px;
+            font-size: 22px;
             width: 30px;
             display: inline-block;
             text-align: center;
@@ -638,8 +640,20 @@ if (isset($_POST['submit'])) {
 <body>
     <div class="wrapper">
         <div class="section">
-
+            
             <div class="admin_profile">
+                <!--FOR CLOCK-->
+            <div class="clockcontainer">
+                <div class="clock">
+                    <span id="hrs"></span>
+                    <span>:</span>
+                    <span id="min"></span>
+                    <span>:</span>
+                    <span id="sec"></span>
+                    <span id="ampm"></span>
+
+                </div>
+            </div>
 
                 <img src="uploaded_image/<?php echo $Profile_image; ?>" class="img-admin" id="image">
 
@@ -677,10 +691,10 @@ if (isset($_POST['submit'])) {
                                 <div class="form-column">
                                     <label style="font-weight:bold; margin-left:48px;">Date:</label>
                                     <input type="date" style="text-align: center;" class="input1" name="date"
-                                        autocomplete="off" value="<?php echo $date; ?>" required>
+                                        value="<?php echo $date; ?>" required>
                                     <label style="margin-left:75px;">Diameter:</label>
                                     <input type="text" style="text-align: center;" class="input1" name="diameter"
-                                        autocomplete="off" value="<?php echo $diameter; ?>" required>
+                                        placeholder="diameter" value="<?php echo $diameter; ?>" required>
                                 </div>
 
                                 <div class="form-column">
@@ -716,7 +730,7 @@ if (isset($_POST['submit'])) {
                                     </select>
                                     <label style="margin-left:90px;">Height:</label>
                                     <input type="text" style="text-align: center;" class="input1" name="height"
-                                        autocomplete="off" value="<?php echo $height; ?>" required>
+                                        placeholder="height" value="<?php echo $height; ?>" required>
                                 </div>
 
                                 <div class="form-column">
@@ -737,18 +751,18 @@ if (isset($_POST['submit'])) {
                                     </select>
                                     <label style="margin-left:67px;">Paint ratio:</label>
                                     <input type="text" style="text-align: center;" class="input1" name="paintRatio"
-                                        autocomplete="off" value="<?php echo $paintRatio; ?>" required>
+                                        placeholder="paint ratio" value="<?php echo $paintRatio; ?>" required>
 
                                 </div>
 
                                 <div class="form-column">
                                     <label style="margin-left:20px;">Batch No:</label>
                                     <input type="text" style="text-align: center;" class="input1" name="batchNumber"
-                                        autocomplete="off" value="<?php echo $batchNumber; ?>" required>
+                                        placeholder="batch number" value="<?php echo $batchNumber; ?>" required>
 
                                     <label style="margin-left:50px;">Acetate ratio:</label>
                                     <input type="text" style="text-align: center;" class="input1" name="acetateRatio"
-                                        autocomplete="off" value="<?php echo $acetateRatio; ?>" required>
+                                        placeholder="acetate ratio" value="<?php echo $acetateRatio; ?>" required>
                                 </div>
                                 <br>
                                 <div class="newpaint">
@@ -775,23 +789,23 @@ if (isset($_POST['submit'])) {
                                     </select>
                                     <label style="margin-left:65px;">Customer:</label>
                                     <input type="text" style="text-align: center;" class="input2" name="customer_name"
-                                        autocomplete="off" value="<?php echo $customer_name; ?>" required>
+                                        placeholder="customer" value="<?php echo $customer_name; ?>" required>
                                     <br>
                                     <label style="margin-left:38px;">Paint (L):</label>
                                     <input type="text" style="text-align: center;" class="input2" name="NewpaintL"
-                                        autocomplete="off" value="<?php echo $NewpaintL; ?>" required>
+                                        placeholder="paint liter" value="<?php echo $NewpaintL; ?>" required>
                                     <label style="margin-left:71px;">Quantity:</label>
                                     <input type="text" style="text-align: center;" class="input2" name="quantity"
-                                        autocomplete="off" value="<?php echo $quantity; ?>" required>
+                                        placeholder="quantity" value="<?php echo $quantity; ?>" required>
                                     <br>
                                     <label style="margin-left:22px;">Acetate (L):</label>
                                     <input type="text" style="text-align: center;" class="input2" name="NewacetateL"
-                                        autocomplete="off" value="<?php echo $NewacetateL; ?>" required>
+                                        placeholder="acetate liter" value="<?php echo $NewacetateL; ?>" required>
                                     <br>
 
                                     <label>Spay Viscosity:</label>
                                     <input type="text" style="text-align: center;" class="input2" name="sprayViscosity"
-                                        autocomplete="off" value="<?php echo $sprayViscosity; ?>" required>
+                                        placeholder="spray viscosity" value="<?php echo $sprayViscosity; ?>" required>
                                     <br>
                                 </div>
                             </aside>
@@ -804,50 +818,31 @@ if (isset($_POST['submit'])) {
 
                                 <label style="margin-left:25px;">Diameter:</label>
                                 <input type="text" style="text-align: center;" class="input1" name="Endingdiameter"
-                                    autocomplete="off" value="<?php echo $Endingdiameter; ?>" required>
+                                    placeholder="diameter" value="<?php echo $Endingdiameter; ?>" required>
                                 <br>
 
                                 <label style="margin-left:39px;">Height:</label>
                                 <input type="text" style="text-align: center;" class="input1" name="Endingheight"
-                                    autocomplete="off" value="<?php echo $Endingheight; ?>" required>
+                                    placeholder="height" value="<?php echo $Endingheight; ?>" required>
                                 <br>
 
                                 <label style="margin-left:18px;">Paint ratio:</label>
                                 <input type="text" style="text-align: center;" class="input1" name="EndingpaintRatio"
-                                    autocomplete="off" value="<?php echo $EndingpaintRatio; ?>" required>
+                                    placeholder="paint ratio" value="<?php echo $EndingpaintRatio; ?>" required>
                                 <br>
                                 <label>Acetate ratio:</label>
                                 <input type="text" style="text-align: center;" class="input1" name="EndingacetateRatio"
-                                    autocomplete="off" value="<?php echo $EndingacetateRatio; ?>" required>
+                                    placeholder="acetate ratio" value="<?php echo $EndingacetateRatio; ?>" required>
                                 <br><br>
 
-                                <div class="yield">
-                                    <legend style=" color:white; font-weight:bold; margin-left:30px;">Yield</legend>
-
-
-                                    <br><br>
-                                    <label style="margin-left:50px;">Paint:</label>
-                                    <input type="text" style="text-align: center;" class="input1" name="paintYield"
-                                        autocomplete="off" value="<?php echo $paintYield; ?>">
-                                    <br>
-                                    <label style="margin-left:35px;">Acetate:</label>
-                                    <input type="text" style="text-align: center;" class="input1" name="acetateYield"
-                                        autocomplete="off" value="<?php echo $acetateYield; ?>">
-                                    <br>
-                                </div>
-                                <br><br>
-                                <div class="remarks">
-                                    <label style="margin-left:28px;">Remarks:</label>
-                                    <input type="text" style="height:60px; text-align: center;" class="input1" name="remarks"
-                                        autocomplete="off" value="<?php echo $remarks; ?>">
-
+                                 
                                 </div>
                             </aside>
 
                         </div>
                         <footer>
-                            <button type="submit" id="update" class="btn btn-primary btn-lg"
-                                name="submit" style="font-size:20px; border-color:white; width:10%; padding-top:1%;padding-bottom:1%;">Add</button>
+                            <button type="submit" id="update" class="btn btn-primary btn-lg" name="submit"
+                                style="font-size:20px; border-color:white; width:10%; padding-top:1%;padding-bottom:1%;">Add</button>
 
                         </footer>
 
@@ -880,19 +875,19 @@ if (isset($_POST['submit'])) {
                     </li>
                     <li>
                         <a href="dataEntry.php" class="active">
-                            <span class="icon"><i class="fa-regular fa-keyboard"></i></span>
-                            <span class="item">Data Entry</span>
+                            <span class="icon"><i class="fa-solid fa-table-cells-large"></i></span>
+                            <span class="item">Dashboard</span>
                         </a>
                     </li>
                     <li>
                         <a href="volume.php">
-                            <span class="icon"><i class="fa-solid fa-chart-simple"></i></span>
+                            <span class="icon"><i class="fa-solid fa-flask-vial"></i></span>
                             <span class="item">Volume</span>
                         </a>
                     </li>
                     <li>
                         <a href="monitoring.php">
-                            <span class="icon"><i class="fas fa-desktop"></i></span>
+                            <span class="icon"><i class="fa-solid fa-chart-column"></i></span>
                             <span class="item">Monitoring</span>
                         </a>
                     </li>
@@ -904,19 +899,6 @@ if (isset($_POST['submit'])) {
                     </li>
 
                 </ul>
-
-                <!--FOR CLOCK-->
-                <div class="clockcontainer">
-                    <div class="clock">
-                        <span id="hrs"></span>
-                        <span>:</span>
-                        <span id="min"></span>
-                        <span>:</span>
-                        <span id="sec"></span>
-                        <span id="ampm"></span>
-
-                    </div>
-                </div>
 
             </div>
 

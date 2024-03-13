@@ -54,10 +54,46 @@ if (!$result) {
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- FOR VOLUME ICON -->
+    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
+
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.5.1/css/dataTables.dateTime.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+
+    <!-- Bootstrap Multiselect CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
+
+    <!-- DataTables JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+
+    <!-- DataTables Buttons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"
+        integrity="sha512-XMVd28F1oH/O71fzwBnV7HucLxVwtxf26XV8P4wPk26EDxuGZ91N8bsOttmnomcCD3CS5ZMRL50H0GgOHvegtg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+
+    <!-- Bootstrap Multiselect JS -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.min.js"></script>
+
+    <!-- MULTI-SELECT CSS to hide columns -->
+    <link rel="stylesheet" href="https://unpkg.com/multiple-select@1.7.0/dist/multiple-select.min.css">
+    <!-- MULTI-SELECT JS to hide columns -->
+    <script src="https://unpkg.com/multiple-select@1.7.0/dist/multiple-select.min.js"></script>
 
     <title>Paint-Acetate Volume</title>
 
@@ -567,6 +603,58 @@ if (!$result) {
             /* Add transition for smooth hover effect */
         }
 
+
+        /* FOR CLOCK */
+
+        .clockcontainer {
+            width: 295px;
+            height: 180px;
+            position: absolute;
+            top: 12%;
+            left: 80%;
+            transform: translate(-50%, -50%);
+
+
+        }
+
+        .clock {
+
+            color: black;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .clock span {
+            font-size: 22px;
+            width: 30px;
+            display: inline-block;
+            text-align: center;
+            position: relative;
+        }
+
+        /*FOR MULTIPLE SELECT*/
+        span.placeholder {
+            display: none;
+        }
+
+        /* Adjust the size of checkboxes */
+        input[type="checkbox"] {
+            width: 15px;
+            /* Set the width */
+            height: 15px;
+            /* Set the height */
+
+        }
+        .ms-select-all label span,li label span {
+  display: inline-block;
+  width: 100px; /* Adjust width as needed */
+  text-align: left;
+}
+
+
         /*FOR SYSTEM RESPONSIVE */
     </style>
 </head>
@@ -574,7 +662,21 @@ if (!$result) {
 <body>
     <div class="wrapper">
         <div class="section">
+
             <div class="admin_profile">
+                <!--FOR CLOCK-->
+                <div class="clockcontainer">
+                    <div class="clock">
+                        <span id="hrs"></span>
+                        <span>:</span>
+                        <span id="min"></span>
+                        <span>:</span>
+                        <span id="sec"></span>
+                        <span id="ampm"></span>
+
+                    </div>
+                </div>
+
                 <img src="uploaded_image/<?php echo $Profile_image; ?>" class="img-admin" id="image">
 
                 <select class="dropdown" required onchange="handleDropdownChange(this)">
@@ -610,12 +712,39 @@ if (!$result) {
                             autocomplete="off" required>
 
                     </div>
+                    <!--columns to Display-->
+
+                    <select name="toggle_column" id="toggle_column" multiple>
+                        <option value="0">Date</option>
+                        <option value="1">Paint Color</option>
+                        <option value="2">Supplier</option>
+                        <option value="3">Batch Number</option>
+                        <option value="4">Pi</option>
+                        <option value="5">Diameter</option>
+                        <option value="6">Height</option>
+                        <option value="7">Conversion Factor</option>
+                        <option value="8">Volume</option>
+                        <option value="9">Paint Ratio</option>
+                        <option value="10">Acetate Ratio</option>
+                        <option value="11">Paint (L)</option>
+                        <option value="12">Acetate (L)</option>
+                        <option value="13">Pi</option>
+                        <option value="14">Diameter</option>
+                        <option value="15">Height</option>
+                        <option value="16">Conversion Factor</option>
+                        <option value="17">Volume</option>
+                        <option value="18">Paint Ratio</option>
+                        <option value="19">Acetate Ratio</option>
+                        <option value="20">Paint</option>
+                        <option value="21">Acetate</option>
+                        <option value="22">Operation</option>
+                    </select>
+
+
                 </div>
 
+
                 <div class="main2">
-
-
-
                     <table id="datatables" class="display" style="width:100%;">
                         <thead>
                             <tr>
@@ -698,15 +827,15 @@ if (!$result) {
                                 mysqli_query($con, $insertQuery);
 
 
-                                 // Calculate Ending volume
-                                 $Endingvolume = ($pi * $Endingdiameter * $Endingdiameter * $Endingheight * $conversionFactor) / 4;
-                                 // Round off the  ending volume to the nearest hundredth
-                                 $roundedEndVolume = round($Endingvolume, 2);
-                                 // Insert the ending volume value into the database
-                                 $insertQuery = "UPDATE tbl_entry SET Endingvolume = $roundedEndVolume WHERE EntryID = {$row['EntryID']}";
-                                 mysqli_query($con, $insertQuery);
+                                // Calculate Ending volume
+                                $Endingvolume = ($pi * $Endingdiameter * $Endingdiameter * $Endingheight * $conversionFactor) / 4;
+                                // Round off the  ending volume to the nearest hundredth
+                                $roundedEndVolume = round($Endingvolume, 2);
+                                // Insert the ending volume value into the database
+                                $insertQuery = "UPDATE tbl_entry SET Endingvolume = $roundedEndVolume WHERE EntryID = {$row['EntryID']}";
+                                mysqli_query($con, $insertQuery);
 
-                                 // Calculate Ending Paint Liter
+                                // Calculate Ending Paint Liter
                                 $endingPLiter = ($roundedEndVolume * $EndingpaintRatio);
                                 $roundedEndPLiter = round($endingPLiter, 2);
                                 // Insert the Ending Paint Liter value into the database
@@ -758,6 +887,7 @@ if (!$result) {
                         </tbody>
 
                     </table>
+
                 </div>
             </div>
         </div>
@@ -786,19 +916,19 @@ if (!$result) {
                 </li>
                 <li>
                     <a href="dataEntry.php">
-                        <span class="icon"><i class="fa-regular fa-keyboard"></i></span>
-                        <span class="item">Data Entry</span>
+                        <span class="icon"><i class="fa-solid fa-table-cells-large"></i></span>
+                        <span class="item">Dashboard</span>
                     </a>
                 </li>
                 <li>
                     <a href="volume.php" class="active">
-                        <span class="icon"><i class="fa-solid fa-chart-simple"></i></span>
+                        <span class="icon"><i class="fa-solid fa-flask-vial"></i></span>
                         <span class="item">Volume</span>
                     </a>
                 </li>
                 <li>
                     <a href="monitoring.php">
-                        <span class="icon"><i class="fas fa-desktop"></i></span>
+                        <span class="icon"><i class="fa-solid fa-chart-column"></i></span>
                         <span class="item">Monitoring</span>
                     </a>
                 </li>
@@ -887,49 +1017,86 @@ if (!$result) {
         </div>
     </div>
 
-
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-        crossorigin="anonymous"></script>
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-
-    <!-- DataTables JS -->
-    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
-
-    <!-- DataTables Buttons -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"
-        integrity="sha512-XMVd28F1oH/O71fzwBnV7HucLxVwtxf26XV8P4wPk26EDxuGZ91N8bsOttmnomcCD3CS5ZMRL50H0GgOHvegtg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
-
     <!--DATA TABLES-->
     <script>
+        // Function to hide all columns
+        function hideAllColumns() {
+            for (var i = 0; i < 23; i++) {
+                $('#datatables').DataTable().column(i).visible(false);
+            }
+        }
+
+        // Function to show all columns
+        function showAllColumns() {
+            for (var i = 0; i < 23; i++) {
+                $('#datatables').DataTable().column(i).visible(true);
+            }
+        }
+
         $(document).ready(function () {
-            new DataTable('#datatables', {
+            // Initialize DataTable
+            $('#datatables').DataTable({
                 scrollX: true,
                 scrollY: true,
-
                 dom: 'Bfrtip',
                 buttons: [
                     'copy', 'csv', 'excel', 'print',
-
                     {
                         extend: 'pdf',
                         orientation: 'landscape',
                         pageSize: 'LEGAL'
                     }
                 ]
+            });
 
+            // Initialize multiple-select plugin
+            $('#toggle_column').multipleSelect({
+                width: 200,
+                onClick: function () {
+                    var selectedItems = $('#toggle_column').multipleSelect("getSelects");
+                    hideAllColumns();
+                    for (var i = 0; i < selectedItems.length; i++) {
+                        var s = selectedItems[i];
+                        $('#datatables').DataTable().column(s).visible(true);
+                    }
+                },
+                onCheckAll: function () {
+                    showAllColumns();
+                    $('#datatables').css('width', '100%');
+                },
+                onUncheckAll: function () {
+                    hideAllColumns();
+                }
             });
         });
+    </script>
+
+
+
+    <!--FOR CLOCK SCRIPT-->
+    <script>
+        let hrs = document.getElementById("hrs");
+        let min = document.getElementById("min");
+        let sec = document.getElementById("sec");
+        let ampm = document.getElementById("ampm");
+
+        setInterval(() => {
+            let currentTime = new Date();
+            let hours = currentTime.getHours();
+            let period = "AM";
+
+            if (hours >= 12) {
+                period = "PM";
+                if (hours > 12) {
+                    hours -= 12;
+                }
+            }
+
+            hrs.innerHTML = (hours < 10 ? "0" : '') + hours;
+            min.innerHTML = (currentTime.getMinutes() < 10 ? "0" : '') + currentTime.getMinutes();
+            sec.innerHTML = (currentTime.getSeconds() < 10 ? "0" : '') + currentTime.getSeconds();
+            ampm.innerHTML = period;
+        }, 1000)
     </script>
 
     <!-- DATE FILTER RANGE -->
