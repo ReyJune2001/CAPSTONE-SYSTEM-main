@@ -405,46 +405,8 @@ if (!$result) {
 
         }
 
-        /*FOR SEARCH BAR */
-        .searchfield {
-            width: 150px;
-            height: 30px;
-            margin-left: 5px;
-            background-color: rgb(225, 225, 212);
-            border-color: #86b7fe;
-            border-radius: 5px;
-
-        }
-
-        /*FOR FILTER BAR */
-        .filterfield {
-            width: 150px;
-            height: 30px;
-            margin-left: 5px;
-            background-color: rgb(225, 225, 212);
-            border-color: #86b7fe;
-            border-radius: 5px;
-        }
-
-        /*FOR SORT BAR */
-        .sortfield {
-            width: 150px;
-            height: 30px;
-            margin-left: 5px;
-            background-color: rgb(225, 225, 212);
-            border-color: #86b7fe;
-            border-radius: 5px;
-        }
-
-
-        /*Operation Button */
-
-        .btn_opt {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 50px;
-            margin-right: 32px;
-        }
+      
+       
 
         .editProfile_container {
             background-color: #3498db;
@@ -732,21 +694,21 @@ if (!$result) {
                             <option value="8">Volume</option>
                             <option value="9">Paint Ratio</option>
                             <option value="10">Acetate Ratio</option>
-                            <option value="11">Paint (L)</option>
-                            <option value="12">Acetate (L)</option>
-                            <option value="13">Pi</option>
-                            <option value="14">Diameter</option>
-                            <option value="15">Height</option>
-                            <option value="16">Conversion Factor</option>
-                            <option value="17">Volume</option>
-                            <option value="18">Paint Ratio</option>
-                            <option value="19">Acetate Ratio</option>
-                            <option value="20">Paint</option>
-                            <option value="21">Acetate</option>
+                            <option value="11">Initial Paint (L)</option>
+                            <option value="12">Initial Acetate (L)</option>
+                            <option value="13">Ending Pi</option>
+                            <option value="14">Ending Diameter</option>
+                            <option value="15">Ending Height</option>
+                            <option value="16">Ending Conversion (F)</option>
+                            <option value="17">Ending Volume</option>
+                            <option value="18">Ending Paint Ratio</option>
+                            <option value="19">Ending Acetate Ratio</option>
+                            <option value="20">Ending Paint (L)</option>
+                            <option value="21">Ending Acetate (L)</option>
                             <option value="22">Operation</option>
                         </select>
                         
-                        <label style="margin-left:20%;">From date:</label>
+                        <label style="margin-left:15%;">From date:</label>
                         <input type="date" style="text-align: center;" class="filterfield" id="min" name="min"
                             autocomplete="off" required>
 
@@ -1067,7 +1029,7 @@ if (!$result) {
 
             // Initialize multiple-select plugin
             $('#toggle_column').multipleSelect({
-                width: 180,
+                width: 240,
                 onClick: function () {
                     var selectedItems = $('#toggle_column').multipleSelect("getSelects");
                     hideAllColumns();

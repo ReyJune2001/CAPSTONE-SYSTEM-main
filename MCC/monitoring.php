@@ -54,10 +54,47 @@ if (!$result) {
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- FOR VOLUME ICON -->
+    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
+
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.5.1/css/dataTables.dateTime.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+
+    <!-- Bootstrap Multiselect CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
+
+    <!-- DataTables JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+
+    <!-- DataTables Buttons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"
+        integrity="sha512-XMVd28F1oH/O71fzwBnV7HucLxVwtxf26XV8P4wPk26EDxuGZ91N8bsOttmnomcCD3CS5ZMRL50H0GgOHvegtg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+
+    <!-- Bootstrap Multiselect JS -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.min.js"></script>
+
+    <!-- MULTI-SELECT CSS to hide columns -->
+    <link rel="stylesheet" href="https://unpkg.com/multiple-select@1.7.0/dist/multiple-select.min.css">
+    <!-- MULTI-SELECT JS to hide columns -->
+    <script src="https://unpkg.com/multiple-select@1.7.0/dist/multiple-select.min.js"></script>
+
     <title>Paint-Acetate Yield Monitoring</title>
 
     <style>
@@ -368,47 +405,6 @@ if (!$result) {
 
         }
 
-        /*FOR SEARCH BAR */
-        .searchfield {
-            width: 150px;
-            height: 30px;
-            margin-left: 5px;
-            background-color: rgb(225, 225, 212);
-            border-color: #86b7fe;
-            border-radius: 5px;
-
-        }
-
-        /*FOR FILTER BAR */
-        .filterfield {
-            width: 150px;
-            height: 30px;
-            margin-left: 5px;
-            background-color: rgb(225, 225, 212);
-            border-color: #86b7fe;
-            border-radius: 5px;
-        }
-
-        /*FOR SORT BAR */
-        .sortfield {
-            width: 150px;
-            height: 30px;
-            margin-left: 5px;
-            background-color: rgb(225, 225, 212);
-            border-color: #86b7fe;
-            border-radius: 5px;
-        }
-
-
-        /*Operation Button */
-
-        .btn_opt {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 50px;
-            margin-right: 32px;
-        }
-
         .editProfile_container {
             background-color: #3498db;
             padding: 3em 0 3em 0;
@@ -532,13 +528,18 @@ if (!$result) {
             margin-left: 3px;
         }
 
-        /* FOR SHOW ENTRIES */
-        .dataTables_wrapper .dataTables_length select {
+        /* FOR SEARCH BAR */
+        .dataTables_wrapper .dataTables_filter input {
             border: 1px solid #aaa;
             border-radius: 3px;
-            padding: 5px;
+            padding-bottom: 19px;
+            padding-top: 19px;
+            width: 154px;
+
             background-color: white;
-            padding: 8px;
+            margin-left: 10px;
+
+
         }
 
         /*FOR FILTER BAR */
@@ -606,6 +607,32 @@ if (!$result) {
             position: relative;
         }
 
+        /*FOR MULTIPLE SELECT*/
+        span.placeholder {
+            display: none;
+        }
+
+        /* Adjust the size of checkboxes */
+        input[type="checkbox"] {
+            width: 15px;
+            /* Set the width */
+            height: 15px;
+            /* Set the height */
+
+        }
+
+        .ms-select-all label span,
+        li label span {
+            display: inline-block;
+            width: 100px;
+            /* Adjust width as needed */
+            text-align: left;
+
+        }
+
+        button.ms-choice {
+            height: 28px;
+        }
 
         /*FOR SYSTEM RESPONSIVE */
     </style>
@@ -629,7 +656,7 @@ if (!$result) {
 
                     </div>
                 </div>
-                
+
                 <img src="uploaded_image/<?php echo $Profile_image; ?>" class="img-admin" id="image">
 
                 <select class="dropdown" required onchange="handleDropdownChange(this)">
@@ -657,6 +684,43 @@ if (!$result) {
                 <!--Filter bar-->
                 <div class="col-md-8">
                     <div class="form-group">
+
+                        <!--columns to Display-->
+
+                        <label>Show / Hide columns:</label>
+
+                        <select name="toggle_column" id="toggle_column" multiple>
+                            <option value="0">Date</option>
+                            <option value="1">Paint Color</option>
+                            <option value="2">Supplier</option>
+                            <option value="3">Batch Number</option>
+                            <option value="4">Initial Paint (L)</option>
+                            <option value="5">Initial Acetate (L)</option>
+                            <option value="6">New Supplier</option>
+                            <option value="7">New Batch No.</option>
+                            <option value="8">New Paint (L)</option>
+                            <option value="9">New Acetate (L)</option>
+                            <option value="10">Spray Viscosity</option>
+                            <option value="11">Ending Paint (L)</option>
+                            <option value="12">Ending Acetate (L)</option>
+                            <option value="13">Total Paint (L)</option>
+                            <option value="14">Total Acetate (L)</option>
+                            <option value="15">Customer</option>
+                            <option value="16">Quantity (Du)</option>
+                            <option value="17">Paint Yield</option>
+                            <option value="18">Acetate Yield</option>
+                            <option value="19">Equipment (P)</option>
+                            <option value="20">Nozzle 1</option>
+                            <option value="21">Nozzle 2</option>
+                            <option value="22">Nozzle 3</option>
+                            <option value="23">Nozzle 4</option>
+                            <option value="24">Nozzle 6</option>
+                            <option value="25">Nozzle 9</option>
+                            <option value="26">Nozzle 10</option>
+                            <option value="27">Remarks</option>
+                            <option value="28">Operation</option>
+                        </select>
+
                         <label style="margin-left:20%;">From date:</label>
                         <input type="date" style="text-align: center;" class="filterfield" id="min" name="min"
                             autocomplete="off" required>
@@ -991,45 +1055,59 @@ if (!$result) {
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-        crossorigin="anonymous"></script>
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-
-    <!-- DataTables JS -->
-    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
-
-    <!-- DataTables Buttons -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"
-        integrity="sha512-XMVd28F1oH/O71fzwBnV7HucLxVwtxf26XV8P4wPk26EDxuGZ91N8bsOttmnomcCD3CS5ZMRL50H0GgOHvegtg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
-
+    
     <!--DATA TABLES-->
     <script>
+        // Function to hide all columns
+        function hideAllColumns() {
+            for (var i = 0; i < 29; i++) {
+                $('#datatables').DataTable().column(i).visible(false);
+            }
+        }
+
+        // Function to show all columns
+        function showAllColumns() {
+            for (var i = 0; i < 29; i++) {
+                $('#datatables').DataTable().column(i).visible(true);
+            }
+        }
+
         $(document).ready(function () {
-            new DataTable('#datatables', {
+            // Initialize DataTable
+            $('#datatables').DataTable({
                 scrollX: true,
                 scrollY: true,
-
                 dom: 'Bfrtip',
                 buttons: [
-                    'copy', 'csv', 'excel', 'print',
-
+                    'copy', 'excel', 'print',
                     {
                         extend: 'pdf',
                         orientation: 'landscape',
                         pageSize: 'LEGAL'
                     }
                 ]
+            });
 
+
+
+            // Initialize multiple-select plugin
+            $('#toggle_column').multipleSelect({
+                width: 200,
+                onClick: function () {
+                    var selectedItems = $('#toggle_column').multipleSelect("getSelects");
+                    hideAllColumns();
+                    for (var i = 0; i < selectedItems.length; i++) {
+                        var s = selectedItems[i];
+                        $('#datatables').DataTable().column(s).visible(true);
+                    }
+                },
+                onCheckAll: function () {
+                    showAllColumns();
+                    $('#datatables').css('width', '100%');
+                },
+                onUncheckAll: function () {
+                    hideAllColumns();
+                }
             });
         });
     </script>
