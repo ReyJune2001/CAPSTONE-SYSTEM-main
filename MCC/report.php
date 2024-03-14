@@ -39,22 +39,12 @@ $Profile_image = $row['Profile_image'];
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <title>Paint-Acetate Reports</title>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
 
-       <!--FOR DATATABLES STYLING-->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.5.1/css/dataTables.dateTime.min.css">
-    
-
-        <!--FOR DATA TABLES SCRIPT-->
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
-    <script src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></script>
-
+    <title>Paint-Acetate Reports</title>
 
     <style>
         * {
@@ -308,115 +298,68 @@ $Profile_image = $row['Profile_image'];
             margin-top: 10px;
         }
 
-        /*FOR VOLUME TABLE CONTENT */
 
-
-        table,
-        th,
-        td {
-            border: 1px solid black;
-            border-collapse: collapse;
-            text-align: center;
-
-            color: black;
-        }
-
-        .date-cell {
-            white-space: nowrap;
-        }
-
-        .paint-color-cell {
-            white-space: nowrap;
-        }
-
-        /*FOR TABLE CONTAINER */
-
-
-        .container3,
-        .container3-fluid,
-        .container3-lg,
-        .container3-md,
-        .container3-sm,
-        .container3-xl,
-        .container3-xxl {
-            --bs-gutter-x: 3.9rem;
-            --bs-gutter-y: 0;
-            width: 100%;
-            padding-right: calc(var(--bs-gutter-x) * .5);
-            padding-left: calc(var(--bs-gutter-x) * .5);
-            margin-top: 15px;
-            margin-right: auto;
-            margin-left: auto;
-            background-color: rgb(225, 225, 212);
-
-        }
-
-        /*FOR SEARCH BAR */
-        .searchfield {
-            width: 150px;
-            height: 30px;
-            margin-left: 5px;
-            background-color: rgb(225, 225, 212);
-            border-color: #86b7fe;
-            border-radius: 5px;
-
-        }
-
-        /*FOR FILTER BAR */
-        .filterfield {
-            width: 150px;
-            height: 30px;
-            margin-left: 5px;
-            background-color: rgb(225, 225, 212);
-            border-color: #86b7fe;
-            border-radius: 5px;
-        }
-
-        /*FOR SORT BAR */
-        .sortfield {
-            width: 150px;
-            height: 30px;
-            margin-left: 5px;
-            background-color: rgb(225, 225, 212);
-            border-color: #86b7fe;
-            border-radius: 5px;
-        }
-
-
-        /*Operation Button */
-
-        .btn_opt {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 50px;
-            margin-right: 32px;
-        }
 
         /*MAIN CONTENT */
 
         .main1 {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(IMAGES/background2.jpg);
-            background-size: cover;
-            padding: 2em 0 2em 0;
+            background-color: rgb(225, 225, 212);
+            padding: 2%;
+
             flex: 1 1 150px;
             margin-top: 20px;
             margin-left: 30px;
             height: 100%;
-            padding-left: 30px;
-            padding-right: 30px;
-
         }
 
-        header {
-            background-color: transparent;
-            padding: 2em 0 2em 0;
-            padding-bottom: 0px;
-        }
+
 
         .main2 {
             display: flex;
             flex: 1;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            height: 100%;
 
+        }
+
+        header {
+            background-color: rgb(25, 142, 214);
+            padding: 2em 0 2em 0;
+            text-align: center;
+        }
+
+        .left {
+            background-color: yellow;
+            padding: 3em 0 3em 0;
+            flex: 1 1 100px;
+            margin-left: auto;
+            text-align: center;
+
+        }
+
+        main {
+            background-color: white;
+            padding: 3em 0 3em 0;
+            flex: 1 1 150px;
+            text-align: center;
+
+        }
+
+        .right {
+            background-color: rgb(0, 255, 38);
+            padding: 3em 0 3em 0;
+            flex: 1 1 100px;
+            margin-right: auto;
+            text-align: center;
+
+        }
+
+        footer {
+            background-color: darkcyan;
+            text-align: center;
+
+            padding: 2em 0 2em 0;
 
         }
 
@@ -429,40 +372,6 @@ $Profile_image = $row['Profile_image'];
 
         }
 
-
-
-
-        label {
-            color: white;
-            text-align: center;
-
-
-        }
-
-        input {
-            width: 30%;
-            height: 35px;
-            margin-bottom: 20px;
-            border-color: #86;
-            border-radius: 5px;
-        }
-
-        .selector {
-            width: 30%;
-            height: 35px;
-            margin-bottom: 20px;
-            border-color: #86;
-            border-radius: 5px;
-        }
-
-        .newpaint {
-            text-align: left;
-            margin-left: 45px;
-        }
-
-        .operational_btn {
-            margin-right: 30px;
-        }
 
         /*FOR PARALLELOGRAM IN ADMIN PROFILE */
         .parallelogram-button {
@@ -545,6 +454,98 @@ $Profile_image = $row['Profile_image'];
             position: relative;
         }
 
+        /*FOR INITIAL INVENTORY */
+        .modal-body {
+
+            background-color: rgb(225, 225, 212);
+
+        }
+
+        .initial {
+            display: flex;
+            flex: 1;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            height: 100%;
+            background-color: #87ceeb;
+            /*#98fb98 */
+        }
+
+
+        .styleform {
+            width: 25%;
+            height: 35px;
+            margin-bottom: 20px;
+            border-color: #86;
+            border-radius: 5px;
+        }
+
+        .modal-body .initial {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            /* Ensure the container fills the height of the modal body */
+        }
+
+        .modal-header {
+
+            background-color: #5484f4;
+        }
+
+        /* Adjust the alignment of the modal title to center it */
+        .center-modal-title {
+            font-size: 30px;
+            text-align: center;
+            /* Center-align the modal title */
+            margin: 0 auto;
+            /* Center the title horizontally */
+            margin-left: 38%;
+        }
+
+        /*FOR NEW PAINT MIX */
+        .newpaintmix {
+            display: flex;
+            flex-direction: row;
+            /* Boxes will be arranged horizontally */
+            justify-content: space-around;
+            /* Space evenly distributed along the main axis */
+            align-items: center;
+
+        }
+
+        .box {
+            width: 600px;
+            height: 50px;
+            padding: 10px;
+            border: 2px solid #333;
+            text-align: center;
+        }
+
+        .box1 {
+            font-size: 20px;
+            background-color: #b6e86b;
+        }
+
+
+        /*FOR ENDING INVENTORY MODAL STYLES */
+        .ending {
+            display: flex;
+            flex: 1;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            height: 100%;
+            background-color: #87ceeb;
+            /*#98fb98 */
+        }
+        .modal-body .ending {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            /* Ensure the container fills the height of the modal body */
+        }
+
         /*FOR SYSTEM RESPONSIVE */
     </style>
 </head>
@@ -552,21 +553,21 @@ $Profile_image = $row['Profile_image'];
 <body>
     <div class="wrapper">
         <div class="section">
-            
+
             <div class="admin_profile">
                 <!--FOR CLOCK-->
-            <div class="clockcontainer">
-                <div class="clock">
-                    <span id="hrs"></span>
-                    <span>:</span>
-                    <span id="min"></span>
-                    <span>:</span>
-                    <span id="sec"></span>
-                    <span id="ampm"></span>
+                <div class="clockcontainer">
+                    <div class="clock">
+                        <span id="hrs"></span>
+                        <span>:</span>
+                        <span id="min"></span>
+                        <span>:</span>
+                        <span id="sec"></span>
+                        <span id="ampm"></span>
 
+                    </div>
                 </div>
-            </div>
-            
+
                 <img src="uploaded_image/<?php echo $Profile_image; ?>" class="img-admin" id="image">
 
                 <select class="dropdown" required onchange="handleDropdownChange(this)">
@@ -589,7 +590,268 @@ $Profile_image = $row['Profile_image'];
             </div>
 
             <!--MAIN CONTENT-->
+            <div class="main1">
+                <header>Header content</header>
+                <div class="main2">
+                    <aside class="left">Left content</aside>
+                    <main>
+                        <button type="button" class="btn btn-primary" id="initial">Initial Inventory <i
+                                class="fa-regular fa-square-plus"></i></button>
 
+                        <!-- Initial Inventory modal -->
+
+                        <div class="modal fade" id="initialmodal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title center-modal-title" id="exampleModalLabel">Initial
+                                            Inventory</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <form method="post">
+                                            <fieldset>
+                                                <div class="initial">
+                                                    <div class="form-column">
+                                                        <br>
+                                                        <label>Date:</label>
+                                                        <input type="date" style="text-align: center;" class="styleform"
+                                                            name="date" value="<?php echo $date; ?>" required>
+
+                                                        <label style="margin-left:6%;">Diameter:</label>
+                                                        <input type="text" style="text-align: center;" class="styleform"
+                                                            name="diameter" placeholder="diameter"
+                                                            value="<?php echo $diameter; ?>" required>
+                                                        <br>
+                                                        <label style="">Paint Color:</label>
+                                                        <select name="paint_color"
+                                                            style="text-align: center; margin-right:4%;"
+                                                            class="styleform" required>
+                                                            <option value="">------ Select ------</option>
+                                                            <option value="Royal Blue" <?php if ($paint_color == 'Royal Blue')
+                                                                echo 'selected'; ?>>Royal Blue</option>
+                                                            <option value="Deft Blue" <?php if ($paint_color == 'Deft Blue')
+                                                                echo 'selected'; ?>>Deft Blue</option>
+                                                            <option value="Buff" <?php if ($paint_color == 'Buff')
+                                                                echo 'selected'; ?>>Buff
+                                                            </option>
+                                                            <option value="Golden Brown" <?php if ($paint_color == 'Golden Brown')
+                                                                echo 'selected'; ?>>Golden Brown</option>
+                                                            <option value="Clear" <?php if ($paint_color == 'Clear')
+                                                                echo 'selected'; ?>>Clear
+                                                            </option>
+                                                            <option value="White" <?php if ($paint_color == 'White')
+                                                                echo 'selected'; ?>>White
+                                                            </option>
+                                                            <option value="Black" <?php if ($paint_color == 'Black')
+                                                                echo 'selected'; ?>>Black
+                                                            </option>
+                                                            <option value="Alpha Gray" <?php if ($paint_color == 'Alpha Gray')
+                                                                echo 'selected'; ?>>Alpha Gray</option>
+                                                            <option value="Nile Green" <?php if ($paint_color == 'Nile Green')
+                                                                echo 'selected'; ?>>Nile Green</option>
+                                                            <option value="Emirald Green" <?php if ($paint_color == 'Emirald Green')
+                                                                echo 'selected'; ?>>Emirald Green</option>
+                                                            <option value="Jade Green" <?php if ($paint_color == 'Jade Green')
+                                                                echo 'selected'; ?>>Jade Green</option>
+                                                        </select>
+                                                        <label style="margin-left:4%;">Height:</label>
+                                                        <input type="text" style="text-align: center; margin-right:6%;"
+                                                            class="styleform" name="height" placeholder="height"
+                                                            value="<?php echo $height; ?>" required>
+                                                        <br>
+                                                        <label
+                                                            style="text-align: center; margin-left:10%;">Supplier:</label>
+                                                        <select name="supplier_name" style="text-align: center; "
+                                                            class="styleform" required>
+                                                            <option value="">------ Select ------</option>
+                                                            <option value="Nippon" <?php if ($supplier_name == 'Nippon')
+                                                                echo 'selected'; ?>>
+                                                                Nippon</option>
+                                                            <option value="Treasure Island" <?php if ($supplier_name == 'Treasure Island')
+                                                                echo 'selected'; ?>>Treasure Island</option>
+                                                            <option value="Inkote" <?php if ($supplier_name == 'Inkote')
+                                                                echo 'selected'; ?>>
+                                                                Inkote</option>
+                                                            <option value="Century" <?php if ($supplier_name == 'Century')
+                                                                echo 'selected'; ?>>
+                                                                Century</option>
+                                                        </select>
+
+                                                        <label style="margin-left:5%;">Paint ratio:</label>
+                                                        <input type="text" style="text-align: center; margin-right:13%;"
+                                                            class="styleform" name="paintRatio"
+                                                            placeholder="paint ratio" value="<?php echo $paintRatio; ?>"
+                                                            required>
+                                                        <br>
+                                                        <label style="margin-left:5%;">Batch No:</label>
+                                                        <input type="text" style="text-align: center;" class="styleform"
+                                                            name="batchNumber" placeholder="batch number"
+                                                            value="<?php echo $batchNumber; ?>" required>
+
+                                                        <label style="margin-left:3%;">Acetate ratio:</label>
+                                                        <input type="text" style="text-align: center; margin-right:9%;"
+                                                            class="styleform" name="acetateRatio"
+                                                            placeholder="acetate ratio"
+                                                            value="<?php echo $acetateRatio; ?>" required>
+                                                        <br><br>
+
+                                                        <hr style="border-top: 5px solid black;">
+                                                        <br>
+                                                        <div class="newpaintmix">
+                                                            <div class="box box1">New Paint Mix</div>
+                                                        </div>
+                                                        <br>
+
+                                                        <label style="margin-left:6%;">Supplier:</label>
+                                                        <select name="newSupplier_name" style="text-align: center;"
+                                                            class="styleform" required>
+                                                            <option value="">------ Select ------</option>
+                                                            <option value="Nippon" <?php if ($newSupplier_name == 'Nippon')
+                                                                echo 'selected'; ?>>Nippon</option>
+                                                            <option value="Treasure Island" <?php if ($newSupplier_name == 'Treasure Island')
+                                                                echo 'selected'; ?>>Treasure Island</option>
+                                                            <option value="Inkote" <?php if ($newSupplier_name == 'Inkote')
+                                                                echo 'selected'; ?>>Inkote</option>
+                                                            <option value="Century" <?php if ($newSupplier_name == 'Century')
+                                                                echo 'selected'; ?>>Century</option>
+                                                        </select>
+
+                                                        <label style="margin-left:5%;">Customer:</label>
+                                                        <input type="text" style="text-align: center; margin-right:9%;"
+                                                            class="styleform" name="customer_name"
+                                                            placeholder="customer" value="<?php echo $customer_name; ?>"
+                                                            required>
+                                                        <br>
+                                                        <label style="margin-left:6%;">Paint (L):</label>
+                                                        <input type="text" style="text-align: center;" class="styleform"
+                                                            name="NewpaintL" placeholder="paint liter"
+                                                            value="<?php echo $NewpaintL; ?>" required>
+
+                                                        <label style="margin-left:6%;">Quantity:</label>
+                                                        <input type="text" style="text-align: center; margin-right:9%;"
+                                                            class="styleform" name="quantity" placeholder="quantity"
+                                                            value="<?php echo $quantity; ?>" required>
+                                                        <br>
+                                                        <label style="margin-left:4%;">Acetate (L):</label>
+                                                        <input type="text" style="text-align: center;" class="styleform"
+                                                            name="NewacetateL" placeholder="acetate liter"
+                                                            value="<?php echo $NewacetateL; ?>" required>
+
+
+                                                        <label style="margin-left:1%;">Spay Viscosity:</label>
+                                                        <input type="text" style="text-align: center; margin-right:9%;"
+                                                            class="styleform" name="sprayViscosity"
+                                                            placeholder="spray viscosity"
+                                                            value="<?php echo $sprayViscosity; ?>" required>
+                                                        <br><br>
+
+                                                        <button type="submit" id="update" class="btn btn-primary btn-lg"
+                                                            name="submit"
+                                                            style="font-size:20px; border-radius:50px; border-color:white; width:30%; padding-top:1%;padding-bottom:1%;">Add</button>
+
+
+                                                    </div>
+
+
+                                                </div>
+                                            </fieldset>
+                                        </form>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--FOR Initial Inventory Script-->
+                        <script>
+                            document.getElementById('initial').addEventListener('click', function () {
+                                var initialmodal = new bootstrap.Modal(document.getElementById('initialmodal'));
+                                initialmodal.show();
+                            })
+                        </script>
+
+
+                        <button class="btn btn-success" id="ending">Ending Inventory <i
+                                class="fa-regular fa-square-plus"></i></button>
+
+                        <!-- Ending Inventory modal -->
+
+                        <div class="modal fade" id="endingmodal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header" style="background-color:#6be87a;">
+                                        <h5 class="modal-title center-modal-title" id="exampleModalLabel">Ending
+                                            Inventory</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body" style="background-color: rgb(225, 225, 212);">
+
+                                        <form method="post">
+                                            <fieldset>
+                                                <div class="ending">
+                                                    <div class="form-column">
+                                                        <br>
+                                                        <label style="margin-left:;">Diameter:</label>
+                                                        <input type="text" style="text-align: center;" class="styleform"
+                                                            name="Endingdiameter" placeholder="diameter"
+                                                            value="<?php echo $Endingdiameter; ?>" required>
+                                                        
+
+                                                        <label style="margin-left:8%">Height:</label>
+                                                        <input type="text" style="text-align: center;" class="styleform"
+                                                            name="Endingheight" placeholder="height"
+                                                            value="<?php echo $Endingheight; ?>" required>
+                                                        <br>
+
+                                                        <label style="margin-left:1%;">Paint ratio:</label>
+                                                        <input type="text" style="text-align: center;" class="styleform"
+                                                            name="EndingpaintRatio" placeholder="paint ratio"
+                                                            value="<?php echo $EndingpaintRatio; ?>" required>
+                                                        
+                                                        <label style="margin-left:2%;">Acetate ratio:</label>
+                                                        <input type="text" style="text-align: center; margin-right:2%;" class="styleform"
+                                                            name="EndingacetateRatio" placeholder="acetate ratio"
+                                                            value="<?php echo $EndingacetateRatio; ?>" required>
+                                                        <br><br>
+
+                                                        <button type="submit" id="update" class="btn btn-primary btn-lg"
+                                                            name="submit"
+                                                            style="font-size:20px; border-radius:50px; border-color:white; width:30%; padding-top:1%;padding-bottom:1%;">Add</button>
+
+
+
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </form>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--FOR Ending Inventory Script-->
+                        <script>
+                            document.getElementById('ending').addEventListener('click', function () {
+                                var initialmodal = new bootstrap.Modal(document.getElementById('endingmodal'));
+                                initialmodal.show();
+                            })
+                        </script>
+
+                    </main>
+                    <aside class="right">Right content</aside>
+
+                </div>
+                <footer>Footer content</footer>
+            </div>
 
 
             <!--Top menu -->
@@ -641,18 +903,7 @@ $Profile_image = $row['Profile_image'];
 
                 </ul>
 
-                <!--FOR CLOCK-->
-                <div class="clockcontainer">
-                    <div class="clock">
-                        <span id="hrs"></span>
-                        <span>:</span>
-                        <span id="min"></span>
-                        <span>:</span>
-                        <span id="sec"></span>
-                        <span id="ampm"></span>
-
-                    </div>
-                </div>
+               
 
             </div>
         </div>
