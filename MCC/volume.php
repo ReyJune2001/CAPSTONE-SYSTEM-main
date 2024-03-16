@@ -971,12 +971,7 @@ if (!$result) {
             </div>
             <!--menu item-->
             <ul>
-                <li>
-                    <!-- Hidden hyperlink -->
-                    <a href="hidden_profile.php" style="display:none;">Hidden Link
-
-                    </a>
-                </li>
+            
                 <li>
                     <a href="profile.php" style="display:none;">
                         <span class="icon"><i class="fa-solid fa-user"></i></span>
@@ -999,18 +994,6 @@ if (!$result) {
                     <a href="monitoring.php">
                         <span class="icon"><i class="fa-solid fa-chart-column"></i></span>
                         <span class="item">Monitoring</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="report.php">
-                        <span class="icon"><i class="fa-regular fa-folder"></i></span>
-                        <span class="item">Reports</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="update.php" style="display:none;">
-                        <span class="icon"><i class="fa-regular fa-folder"></i></span>
-                        <span class="item">Update</span>
                     </a>
                 </li>
 

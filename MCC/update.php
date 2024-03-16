@@ -378,11 +378,12 @@ if (isset($_POST['update'])) {
             width: 100%;
         }
 
-        /*USER PROFILE STYLES*/
-        .admin_profile {
+       /*admin PROFILE STYLES*/
+       .admin_profile {
             display: flex;
             justify-content: flex-end;
             margin-top: 20px;
+            margin-bottom: 20px;
             margin-right: 32px;
 
         }
@@ -579,8 +580,6 @@ if (isset($_POST['update'])) {
             margin-top: 20px;
             margin-left: 30px;
             height: 100%;
-
-
         }
 
         .left {
@@ -715,20 +714,22 @@ if (isset($_POST['update'])) {
             text-align: center;
         }
 
-        /* FOR CLOCK */
+         /* FOR CLOCK */
 
-        .clockcontainer {
+         .clockcontainer {
             width: 295px;
             height: 180px;
             position: absolute;
-            top: 95%;
+            top: 12%;
+            left: 80%;
+            transform: translate(-50%, -50%);
 
 
         }
 
         .clock {
 
-            color: white;
+            color: black;
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -737,7 +738,7 @@ if (isset($_POST['update'])) {
         }
 
         .clock span {
-            font-size: 20px;
+            font-size: 22px;
             width: 30px;
             display: inline-block;
             text-align: center;
@@ -760,7 +761,19 @@ if (isset($_POST['update'])) {
     <div class="wrapper">
         <div class="section">
 
-            <div class="admin_profile">
+        <div class="admin_profile">
+                <!--FOR CLOCK-->
+                <div class="clockcontainer">
+                    <div class="clock">
+                        <span id="hrs"></span>
+                        <span>:</span>
+                        <span id="min"></span>
+                        <span>:</span>
+                        <span id="sec"></span>
+                        <span id="ampm"></span>
+
+                    </div>
+                </div>
 
                 <img src="uploaded_image/<?php echo $Profile_image; ?>" class="img-admin" id="image">
 
@@ -1014,50 +1027,30 @@ if (isset($_POST['update'])) {
                     </li>
                     <li>
                         <a href="dataEntry.php">
-                            <span class="icon"><i class="fa-regular fa-keyboard"></i></span>
-                            <span class="item">Data Entry</span>
+                        <span class="icon"><i class="fa-solid fa-table-cells-large"></i></span>
+                            <span class="item">Dashboard</span>
                         </a>
                     </li>
                     <li>
                         <a href="volume.php">
-                            <span class="icon"><i class="fa-solid fa-chart-simple"></i></span>
+                        <span class="icon"><i class="fa-solid fa-flask-vial"></i></span>
                             <span class="item">Volume</span>
                         </a>
                     </li>
                     <li>
                         <a href="monitoring.php">
-                            <span class="icon"><i class="fas fa-desktop"></i></span>
+                        <span class="icon"><i class="fa-solid fa-chart-column"></i></span>
                             <span class="item">Monitoring</span>
                         </a>
                     </li>
                     <li>
                         <a href="report.php">
-                            <span class="icon"><i class="fa-regular fa-folder"></i></span>
+                        <span class="icon"><i class="fa-regular fa-folder"></i></span>
                             <span class="item">Reports</span>
                         </a>
                     </li>
 
-                    <li>
-                        <a href="update.php" style="display:none;">
-                            <span class="icon"><i class="fa-regular fa-folder"></i></span>
-                            <span class="item">Volume Update</span>
-                        </a>
-                    </li>
-
                 </ul>
-
-                <!--FOR CLOCK-->
-                <div class="clockcontainer">
-                    <div class="clock">
-                        <span id="hrs"></span>
-                        <span>:</span>
-                        <span id="min"></span>
-                        <span>:</span>
-                        <span id="sec"></span>
-                        <span id="ampm"></span>
-
-                    </div>
-                </div>
 
             </div>
 
@@ -1120,6 +1113,22 @@ if (isset($_POST['update'])) {
             xhr.send(formData);
         }
 
+    </script>
+
+
+ <!-- FOR clickable image dropdown SCRIPT-->
+ <script>
+        function handleDropdownChange(select) {
+            var selectedValue = select.value;
+
+            if (selectedValue === "edit_profile") {
+                // Redirect to the edit profile page
+                window.location.href = "profile.php"; // Change the URL accordingly
+            } else if (selectedValue === "logout") {
+                // Redirect to the logout page
+                window.location.href = "logout.php"; // Change the URL accordingly
+            }
+        }
     </script>
 
 

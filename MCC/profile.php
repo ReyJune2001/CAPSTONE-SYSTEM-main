@@ -202,11 +202,12 @@ if (isset($_POST['submit'])) {
             width: 100%;
         }
 
-        /*USER PROFILE STYLES*/
-        .admin_profile {
+       /*admin PROFILE STYLES*/
+       .admin_profile {
             display: flex;
             justify-content: flex-end;
             margin-top: 20px;
+            margin-bottom: 20px;
             margin-right: 32px;
 
         }
@@ -293,86 +294,7 @@ if (isset($_POST['submit'])) {
             object-fit: cover;
         }
 
-        /*FOR VOLUME TABLE CONTENT */
-
-        table,
-        th,
-        td {
-            border: 1px solid black;
-            border-collapse: collapse;
-            text-align: center;
-
-            color: black;
-        }
-
-        .date-cell {
-            white-space: nowrap;
-        }
-
-        .paint-color-cell {
-            white-space: nowrap;
-        }
-
-        /*FOR TABLE CONTAINER */
-
-        .container3,
-        .container3-fluid,
-        .container3-lg,
-        .container3-md,
-        .container3-sm,
-        .container3-xl,
-        .container3-xxl {
-            --bs-gutter-x: 3.9rem;
-            --bs-gutter-y: 0;
-            width: 100%;
-            padding-right: calc(var(--bs-gutter-x) * .5);
-            padding-left: calc(var(--bs-gutter-x) * .5);
-            margin-top: 15px;
-            margin-right: auto;
-            margin-left: auto;
-            background-color: rgb(225, 225, 212);
-
-        }
-
-        /*FOR SEARCH BAR */
-        .searchfield {
-            width: 150px;
-            height: 30px;
-            margin-left: 5px;
-            background-color: rgb(225, 225, 212);
-            border-color: #86b7fe;
-            border-radius: 5px;
-
-        }
-
-        /*FOR FILTER BAR */
-        .filterfield {
-            width: 150px;
-            height: 30px;
-            margin-left: 5px;
-            background-color: rgb(225, 225, 212);
-            border-color: #86b7fe;
-            border-radius: 5px;
-        }
-
-        /*FOR SORT BAR */
-        .sortfield {
-            width: 150px;
-            height: 30px;
-            margin-left: 5px;
-            background-color: rgb(225, 225, 212);
-            border-color: #86b7fe;
-            border-radius: 5px;
-        }
-
-        /*Operation Button */
-
-        .btn_opt {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 50px;
-            margin-right: 32px;
-        }
+       
 
         /*MAIN CONTENT */
 
@@ -380,26 +302,20 @@ if (isset($_POST['submit'])) {
 
             background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(IMAGES/background2.jpg);
             background-size: cover;
-            padding: 2em 0 2em 0;
+            padding: 2%;
             flex: 1 1 150px;
             margin-top: 20px;
             margin-left: 30px;
             height: 100%;
             padding-left: 30px;
             padding-right: 30px;
-
+           
         }
 
         header {
             background-color: transparent;
             padding: 2em 0 2em 0;
             padding-bottom: 0px;
-        }
-
-        .main2 {
-            display: flex;
-            flex: 1;
-
         }
 
         .editProfile_container {
@@ -478,10 +394,12 @@ if (isset($_POST['submit'])) {
         .main2 {
             display: flex;
             flex: 1;
-
+            padding-top: 2%;
+            padding-left: 2%;
+            padding-right: 2%;
+            height: 100%;
 
         }
-
 
         legend {
             text-align: left;
@@ -556,20 +474,22 @@ if (isset($_POST['submit'])) {
             text-align: center;
         }
 
-        /* FOR CLOCK */
+       /* FOR CLOCK */
 
-        .clockcontainer {
+       .clockcontainer {
             width: 295px;
             height: 180px;
             position: absolute;
-            top: 95%;
+            top: 12%;
+            left: 80%;
+            transform: translate(-50%, -50%);
 
 
         }
 
         .clock {
 
-            color: white;
+            color: black;
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -578,7 +498,7 @@ if (isset($_POST['submit'])) {
         }
 
         .clock span {
-            font-size: 20px;
+            font-size: 22px;
             width: 30px;
             display: inline-block;
             text-align: center;
@@ -592,11 +512,24 @@ if (isset($_POST['submit'])) {
 <body>
     <div class="wrapper">
         <div class="section">
-            <div class="admin_profile">
+        <div class="admin_profile">
+                <!--FOR CLOCK-->
+                <div class="clockcontainer">
+                    <div class="clock">
+                        <span id="hrs"></span>
+                        <span>:</span>
+                        <span id="min"></span>
+                        <span>:</span>
+                        <span id="sec"></span>
+                        <span id="ampm"></span>
+
+                    </div>
+                </div>
+
                 <img src="uploaded_image/<?php echo $Profile_image; ?>" class="img-admin" id="image">
 
                 <select class="dropdown" required onchange="handleDropdownChange(this)">
-                    <option>
+                    <option value="admin">
                         <?php echo $Username; ?>
                     </option>
                     <option value="edit_profile">&nbsp;Edit Profile&nbsp;</option>
@@ -621,12 +554,6 @@ if (isset($_POST['submit'])) {
                         <h4 style="margin-left:25px; font-size:40px; color:white; margin-top:80px; text-align:right;">
                             <?php echo $Name; ?>
                         </h4>
-                    </div>
-                    <div class="profile-history-btn">
-                        <a href="profile.php" class="parallelogram-button parallelogram-button1"
-                            style="font-size:20px; color:white;">Edit Profile</a>
-                        <a href="hidden_profile.php" class="parallelogram-button parallelogram-button2"
-                            style="font-size:20px; color:white;">History</a>
                     </div>
                 </header>
 
@@ -676,7 +603,7 @@ if (isset($_POST['submit'])) {
                                         class="box" style="margin-right:38%;">
                                 </div>
 
-                                <br><br><br>
+                                <br><br>
                                 <button type="submit" id="update" name="submit" class="btn btn-primary"
                                     style="font-size:20px;">Save Changes</button>
 
@@ -707,43 +634,24 @@ if (isset($_POST['submit'])) {
                     </li>
                     <li>
                         <a href="dataEntry.php">
-                            <span class="icon"><i class="fa-regular fa-keyboard"></i></span>
-                            <span class="item">Data Entry</span>
+                        <span class="icon"><i class="fa-solid fa-table-cells-large"></i></span>
+                            <span class="item">Dashboard</span>
                         </a>
                     </li>
                     <li>
                         <a href="volume.php">
-                            <span class="icon"><i class="fa-solid fa-chart-simple"></i></span>
+                        <span class="icon"><i class="fa-solid fa-flask-vial"></i></span>
                             <span class="item">Volume</span>
                         </a>
                     </li>
                     <li>
                         <a href="monitoring.php">
-                            <span class="icon"><i class="fas fa-desktop"></i></span>
+                        <span class="icon"><i class="fa-solid fa-chart-column"></i></span>
                             <span class="item">Monitoring</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="report.php">
-                            <span class="icon"><i class="fa-regular fa-folder"></i></span>
-                            <span class="item">Reports</span>
                         </a>
                     </li>
 
                 </ul>
-
-                <!--FOR CLOCK-->
-                <div class="clockcontainer">
-                    <div class="clock">
-                        <span id="hrs"></span>
-                        <span>:</span>
-                        <span id="min"></span>
-                        <span>:</span>
-                        <span id="sec"></span>
-                        <span id="ampm"></span>
-
-                    </div>
-                </div>
 
             </div>
         </div>

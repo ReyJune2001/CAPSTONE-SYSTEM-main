@@ -343,7 +343,7 @@ if (isset ($_POST['submit'])) {
             width: 100%;
         }
 
-        /*USER PROFILE STYLES*/
+        /*ADMIN PROFILE STYLES*/
         .admin_profile {
             display: flex;
             justify-content: flex-end;
@@ -894,6 +894,9 @@ if (isset ($_POST['submit'])) {
                                             <fieldset>
                                                 <div class="initial">
                                                     <div class="form-column">
+                                                        <div class="newpaintmix">
+                                                            <h4>Initial Inventory</h4>
+                                                        </div>
                                                         <br>
                                                         <label>Date:</label>
                                                         <input type="date" style="text-align: center;" class="styleform"
@@ -1030,6 +1033,9 @@ if (isset ($_POST['submit'])) {
                                                                         value="<?php echo $EndingacetateRatio; ?>"
                                                                         required>
                                                                     <br><br>
+                                                                </div>
+                                                            </div>
+                                                        </div>
 
 
                                                                     <div class="newpaintmix">
@@ -1096,9 +1102,7 @@ if (isset ($_POST['submit'])) {
                                                                         step="any" placeholder="quantity"
                                                                         value="<?php echo $quantity; ?>" required>
                                                                     <br><br>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                              
 
                                                         <div class="yield">
                                                             <h4>Yield</h4>
@@ -1162,10 +1166,7 @@ if (isset ($_POST['submit'])) {
                 <!--menu item-->
                 <ul>
                     <li>
-                        <!-- Hidden hyperlink -->
-                        <a href="hidden_profile.php" style="display:none;">Hidden Link
-
-                        </a>
+                      
                         <a href="profile.php" style="display:none;">
                             <span class="icon"><i class="fa-solid fa-user"></i></span>
                             <span class="item">Profile</span>
@@ -1187,12 +1188,6 @@ if (isset ($_POST['submit'])) {
                         <a href="monitoring.php">
                             <span class="icon"><i class="fa-solid fa-chart-column"></i></span>
                             <span class="item">Monitoring</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="report.php">
-                            <span class="icon"><i class="fa-regular fa-folder"></i></span>
-                            <span class="item">Reports</span>
                         </a>
                     </li>
 

@@ -784,16 +784,9 @@ if (!$result) {
                             <option value="16">Quantity (Du)</option>
                             <option value="17">Paint Yield</option>
                             <option value="18">Acetate Yield</option>
-                            <option value="19">Equipment (P)</option>
-                            <option value="20">Nozzle 1</option>
-                            <option value="21">Nozzle 2</option>
-                            <option value="22">Nozzle 3</option>
-                            <option value="23">Nozzle 4</option>
-                            <option value="24">Nozzle 6</option>
-                            <option value="25">Nozzle 9</option>
-                            <option value="26">Nozzle 10</option>
-                            <option value="27">Remarks</option>
-                            <option value="28">Operation</option>
+                            
+                            <option value="19">Remarks</option>
+                            <option value="20">Operation</option>
                         </select>
 
                         <label style="margin-left:20%;">From date:</label>
@@ -824,10 +817,8 @@ if (!$result) {
                                     Production Output
                                 </th>
                                 <th colspan="2" style="text-align:center; background-color:#007BFF;">Yield</th>
-                                <th style="text-align:center; background-color:rgba(249,228,147,255);">Equipment
-                                    Parameter</th>
-                                <th colspan="7" style="text-align:center; background-color:rgba(249,228,147,255);">Spray
-                                    Time (s)</th>
+                                
+                                
                                 <th colspan="2" style="text-align:center;">Remarks & Operation</th>
 
                             </tr>
@@ -860,16 +851,6 @@ if (!$result) {
                                 <th style="text-align:center; background-color:#007BFF;">Paint (Du'L)</th>
                                 <th style="text-align:center; background-color:#007BFF;">Acetate (Du'L)</th>
 
-                                <th style="text-align:center; background-color:rgba(249,228,147,255);">Fluid
-                                    pressure(psi)</th>
-
-                                <th style="text-align:center; background-color:rgba(249,228,147,255);">Nozzle<br>1</th>
-                                <th style="text-align:center; background-color:rgba(249,228,147,255);">Nozzle<br>2</th>
-                                <th style="text-align:center; background-color:rgba(249,228,147,255);">Nozzle<br>3</th>
-                                <th style="text-align:center; background-color:rgba(249,228,147,255);">Nozzle<br>4</th>
-                                <th style="text-align:center; background-color:rgba(249,228,147,255);">Nozzle<br>6</th>
-                                <th style="text-align:center; background-color:rgba(249,228,147,255);">Nozzle<br>9</th>
-                                <th style="text-align:center; background-color:rgba(249,228,147,255);">Nozzle<br>10</th>
                                 <th style="text-align:center;">Remarks</th>
                                 <th style="text-align:center;">Operation</th>
                             </tr>
@@ -947,14 +928,7 @@ if (!$result) {
                                 echo "<td>{$row['quantity']}</td>";
                                 echo "<td style='color:blue;'>$roundedPaintYield</td>";
                                 echo "<td style='color:blue;'>$roundedAcetateYield</td>";
-                                echo "<td style='color:red;'>12.2</td>";
-                                echo "<td style='color:red;'>1</td>";
-                                echo "<td style='color:red;'>2</td>";
-                                echo "<td style='color:red;'>3</td>";
-                                echo "<td style='color:red;'>4</td>";
-                                echo "<td style='color:red;'>6</td>";
-                                echo "<td style='color:red;'>9</td>";
-                                echo "<td style='color:red;'>10</td>";
+                        
                                 echo "<td>{$row['remarks']}</td>";
                                 echo "<td class='crud'><div style='display: flex; gap: 10px;'>
                                 <a href='update.php?data-entry-id={$row['EntryID']}'><button class='btn btn-info text-light'>Edit</button></a>
@@ -1013,12 +987,7 @@ if (!$result) {
             </div>
             <!--menu item-->
             <ul>
-                <li>
-                    <!-- Hidden hyperlink -->
-                    <a href="hidden_profile.php" style="display:none;">Hidden Link
-
-                    </a>
-                </li>
+            
                 <li>
                     <a href="profile.php" style="display:none;">
                         <span class="icon"><i class="fa-solid fa-user"></i></span>
@@ -1041,12 +1010,6 @@ if (!$result) {
                     <a href="monitoring.php" class="active">
                         <span class="icon"><i class="fa-solid fa-chart-column"></i></span>
                         <span class="item">Monitoring</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="report.php">
-                        <span class="icon"><i class="fa-regular fa-folder"></i></span>
-                        <span class="item">Reports</span>
                     </a>
                 </li>
 
@@ -1127,14 +1090,14 @@ if (!$result) {
     <script>
         // Function to hide all columns
         function hideAllColumns() {
-            for (var i = 0; i < 29; i++) {
+            for (var i = 0; i < 21; i++) {
                 $('#datatables').DataTable().column(i).visible(false);
             }
         }
 
         // Function to show all columns
         function showAllColumns() {
-            for (var i = 0; i < 29; i++) {
+            for (var i = 0; i < 21; i++) {
                 $('#datatables').DataTable().column(i).visible(true);
             }
         }
