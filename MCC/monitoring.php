@@ -3,7 +3,7 @@
 session_start();
 
 // Check if the user is not logged in or is not an admin or operator
-if (!isset($_SESSION['Username']) || ($_SESSION['Level'] != 'Admin' && $_SESSION['Level'] != 'Operator')) {
+if (!isset ($_SESSION['Username']) || ($_SESSION['Level'] != 'Admin' && $_SESSION['Level'] != 'Operator')) {
     header('Location: login.php'); // Redirect to the login page if not authenticated
     exit();
 }
@@ -36,7 +36,7 @@ $sql = "SELECT
 $result = mysqli_query($con, $sql);
 
 if (!$result) {
-    die(mysqli_error($con));
+    die (mysqli_error($con));
 }
 ?>
 <!DOCTYPE html>
@@ -46,16 +46,10 @@ if (!$result) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- FOR VOLUME ICON -->
-    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
@@ -66,37 +60,63 @@ if (!$result) {
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
 
+    <!-- MULTI-SELECT CSS to hide columns -->
+    <link rel="stylesheet" href="https://unpkg.com/multiple-select@1.7.0/dist/multiple-select.min.css">
+
+    <title>Paint-Acetate Yield Monitoring</title>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
     <!-- DataTables JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
 
     <!-- DataTables Buttons -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"
-        integrity="sha512-XMVd28F1oH/O71fzwBnV7HucLxVwtxf26XV8P4wPk26EDxuGZ91N8bsOttmnomcCD3CS5ZMRL50H0GgOHvegtg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-        crossorigin="anonymous"></script>
-
     <!-- Bootstrap Multiselect JS -->
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.min.js"></script>
 
-    <!-- MULTI-SELECT CSS to hide columns -->
-    <link rel="stylesheet" href="https://unpkg.com/multiple-select@1.7.0/dist/multiple-select.min.css">
     <!-- MULTI-SELECT JS to hide columns -->
     <script src="https://unpkg.com/multiple-select@1.7.0/dist/multiple-select.min.js"></script>
 
-    <title>Paint-Acetate Yield Monitoring</title>
 
+    <script>
+        // Check if the drawer is initially open
+        document.addEventListener("DOMContentLoaded", function () {
+            var drawer = document.getElementById('drawer');
+            var drawerToggle = document.getElementById('drawerToggle');
+
+            // Check if drawer is currently open
+            if (drawer.classList.contains('open')) {
+                // If open, close it
+                drawer.classList.remove('open');
+                drawerToggle.classList.remove('fa-angles-right');
+                drawerToggle.classList.add('fa-angles-left');
+            } else {
+                // If closed, open it
+                drawer.classList.add('open');
+                drawerToggle.classList.remove('fa-angles-left');
+                drawerToggle.classList.add('fa-angles-right');
+            }
+        });
+
+        function toggleDrawer() {
+            var drawer = document.getElementById('drawer');
+            var drawerToggle = document.getElementById('drawerToggle');
+            drawer.classList.toggle('open');
+            drawerToggle.classList.toggle('fa-angles-left');
+            drawerToggle.classList.toggle('fa-angles-right');
+        }
+    </script>
     <style>
         * {
 
@@ -634,6 +654,61 @@ if (!$result) {
             height: 28px;
         }
 
+        /* Adjust the show up in delete modal*/
+
+        #deletemodal {
+            top: 30%;
+            /* Adjust this value as needed */
+            transform: translateY(-50%, -50%);
+            height: 50%;
+        }
+
+        /*for collapsible drawer */
+        /* Custom styles for collapsible drawer */
+        #drawer.drawer.p-2 {
+            margin-top: 207px;
+
+        }
+
+        .drawer {
+            position: absolute;
+            right: 35px;
+            /* Adjusted position to move drawer closer to the middle */
+            transform: translateY(-1230px);
+            width: 600px;
+            height: 330px;
+            padding: 20px;
+            background-color: rgb(5, 68, 104);
+            /* Change this to your desired background color */
+            border-left: 1px solid #dee2e6;
+            /* Add border for separation */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Add shadow for visual effect */
+            transition: right 0.3s ease;
+        }
+
+        .drawer.open {
+            right: 356px;
+
+        }
+
+        .toggle-drawer {
+            position: absolute;
+            top: 50%;
+            right: -52px;
+            /* Adjusted position to align with the content */
+            transform: translateY(-50%);
+            cursor: pointer;
+            background-color: rgb(5, 68, 104);
+            padding-left: 4px;
+            padding-right: 8px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            color: white;
+            font-size: 20px;
+            /* Adjust this value to change the size of the caret icon */
+        }
+
         /*FOR SYSTEM RESPONSIVE */
     </style>
 </head>
@@ -735,87 +810,68 @@ if (!$result) {
                     <table id="datatables" class="display" style="width:100%;">
                         <thead>
                             <tr>
-                                <th colspan="6" style="text-align:center; background-color:#007BFF;">Initial Inventory
+                                <th colspan="6" style="text-align:center; background-color:rgba(113,187,234,255);">
+                                    Initial Inventory
                                 </th>
-                                <th colspan="5" style="text-align:center; background-color:#007BFF;">New Paint Mix</th>
-                                <th colspan="2" style="text-align:center; background-color:#FFC107;">Ending Inventory
+                                <th colspan="5" style="text-align:center; background-color:rgba(188,145,237,255);">New
+                                    Paint Mix</th>
+                                <th colspan="2" style="text-align:center; background-color:rgba(255,217,110,255);">
+                                    Ending Inventory
                                 </th>
-                                <th colspan="2" style="text-align:center; background-color:#007BFF">Total Usage</th>
-                                <th colspan="2" style="text-align:center; background-color:#DC3545">Production Output
+                                <th colspan="2" style="text-align:center; background-color:rgba(243,94,62,255);">Total
+                                    Usage</th>
+                                <th colspan="2" style="text-align:center; background-color:rgba(243,94,62,255);">
+                                    Production Output
                                 </th>
-                                <th colspan="2" style="text-align:center; background-color:#007BFF">Yield</th>
-                                <th style="text-align:center; background-color:#FFC107">Equipment Parameter</th>
-                                <th colspan="7" style="text-align:center; background-color:#FFC107">Spray Time (s)</th>
+                                <th colspan="2" style="text-align:center; background-color:#007BFF;">Yield</th>
+                                <th style="text-align:center; background-color:rgba(249,228,147,255);">Equipment
+                                    Parameter</th>
+                                <th colspan="7" style="text-align:center; background-color:rgba(249,228,147,255);">Spray
+                                    Time (s)</th>
                                 <th colspan="2" style="text-align:center;">Remarks & Operation</th>
 
                             </tr>
 
                             <tr>
-                                <th class="bg-primary" style="text-align:center;">Date</th>
-                                <!--This is a  header column for Initial Inventory of Paint Mix-->
-                                <th class="bg-primary" style="text-align:center;">Paint Color</th>
-                                <!--This is a  header column for Initial Inventory of Paint Mix-->
-                                <th class="bg-primary" style="text-align:center;">Supplier</th>
-                                <!--This is a  header column for Initial Inventory of Paint Mix-->
-                                <th class="bg-primary" style="text-align:center;">Batch Number</th>
-                                <!--This is a  header column for Initial Inventory of Paint Mix-->
-                                <th class="bg-primary" style="text-align:center;">Paint(L)</th>
-                                <!--This is a  header column for Initial Inventory of Paint Mix-->
-                                <th class="bg-primary" style="text-align:center;">Acetate(L)</th>
-                                <!--This is a  header column for Initial Inventory of Paint Mix-->
+                                <th style="text-align:center; background-color: rgba(113,187,234,255);">Date</th>
+                                <th style="text-align:center; background-color: rgba(113,187,234,255);">Paint Color</th>
+                                <th style="text-align:center; background-color: rgba(113,187,234,255);">Supplier</th>
+                                <th style="text-align:center; background-color: rgba(113,187,234,255);">Batch Number
+                                </th>
+                                <th style="text-align:center; background-color: rgba(113,187,234,255);">Paint(L)</th>
+                                <th style="text-align:center; background-color: rgba(113,187,234,255);">Acetate(L)</th>
 
-                                <th class="bg-primary" style="text-align:center;">Supplier</th>
-                                <!--This is a  header column of New Paint Mix-->
-                                <th class="bg-primary" style="text-align:center;">Batch Number</th>
-                                <!--This is a  header column of New Paint Mix-->
-                                <th class="bg-primary" style="text-align:center;">Paint(L)</th>
-                                <!--This is a  header column of New Paint Mix-->
-                                <th class="bg-primary" style="text-align:center;">Acetate(L)</th>
-                                <!--This is a  header column of New Paint Mix-->
-                                <th class="bg-primary" style="text-align:center;">Spray Viscosity</th>
-                                <!--This is a  header column of Equipment parameter-->
+                                <th style="text-align:center; background-color:rgba(188,145,237,255);">Supplier</th>
+                                <th style="text-align:center; background-color:rgba(188,145,237,255);">Batch Number</th>
+                                <th style="text-align:center; background-color:rgba(188,145,237,255);">Paint(L)</th>
+                                <th style="text-align:center; background-color:rgba(188,145,237,255);">Acetate(L)</th>
+                                <th style="text-align:center; background-color:rgba(188,145,237,255);">Spray Viscosity
+                                </th>
 
-                                <th class="bg-warning" style="text-align:center;">Paint(L)</th>
-                                <!--This is a  header column of Ending Inventory-->
-                                <th class="bg-warning" style="text-align:center;">Acetate(L)</th>
-                                <!--This is a  header column of Ending Inventory-->
+                                <th style="text-align:center; background-color:rgba(255,217,110,255);">Paint(L)</th>
+                                <th style="text-align:center; background-color:rgba(255,217,110,255);">Acetate(L)</th>
 
-                                <th class="bg-primary" style="text-align:center;">Paint(L)</th>
-                                <!--This is a  header column of Total usage-->
-                                <th class="bg-primary" style="text-align:center;">Acetate(L)</th>
-                                <!--This is a  header column of Total usage-->
+                                <th style="text-align:center; background-color:rgba(243,94,62,255);">Paint(L)</th>
+                                <th style="text-align:center; background-color:rgba(243,94,62,255);">Acetate(L)</th>
 
-                                <th class="bg-danger" style="text-align:center;">Customer</th>
-                                <!--This is a  header column of Production output-->
-                                <th class="bg-danger" style="text-align:center;">Quantity(Du)</th>
-                                <!--This is a  header column of Production output-->
+                                <th style="text-align:center; background-color:rgba(243,94,62,255);">Customer</th>
+                                <th style="text-align:center; background-color:rgba(243,94,62,255);">Quantity(Du)</th>
 
-                                <th class="bg-primary" style="text-align:center;">Paint (Du'L)</th>
-                                <!--This is a  header column of yield-->
-                                <th class="bg-primary" style="text-align:center;">Acetate (Du'L)</th>
-                                <!--This is a  header column of yield-->
+                                <th style="text-align:center; background-color:#007BFF;">Paint (Du'L)</th>
+                                <th style="text-align:center; background-color:#007BFF;">Acetate (Du'L)</th>
 
-                                <th class="bg-warning" style="text-align:center;">Fluid pressure(psi)</th>
-                                <!--This is a  header column of Equipment parameter-->
+                                <th style="text-align:center; background-color:rgba(249,228,147,255);">Fluid
+                                    pressure(psi)</th>
 
-                                <th class="bg-warning" style="text-align:center;">Nozzle<br>1</th>
-                                <!--This is a  header column of Spray time(s)-->
-                                <th class="bg-warning" style="text-align:center;">Nozzle<br>2</th>
-                                <!--This is a  header column of Spray time(s)-->
-                                <th class="bg-warning" style="text-align:center;">Nozzle<br>3</th>
-                                <!--This is a  header column of Spray time(s)-->
-                                <th class="bg-warning" style="text-align:center;">Nozzle<br>4</th>
-                                <!--This is a  header column of Spray time(s)-->
-                                <th class="bg-warning" style="text-align:center;">Nozzle<br>6</th>
-                                <!--This is a  header column of Spray time(s)-->
-                                <th class="bg-warning" style="text-align:center;">Nozzle<br>9</th>
-                                <!--This is a  header column of Spray time(s)-->
-                                <th class="bg-warning" style="text-align:center;">Nozzle<br>10</th>
-                                <!--This is a  header column of Spray time(s)-->
+                                <th style="text-align:center; background-color:rgba(249,228,147,255);">Nozzle<br>1</th>
+                                <th style="text-align:center; background-color:rgba(249,228,147,255);">Nozzle<br>2</th>
+                                <th style="text-align:center; background-color:rgba(249,228,147,255);">Nozzle<br>3</th>
+                                <th style="text-align:center; background-color:rgba(249,228,147,255);">Nozzle<br>4</th>
+                                <th style="text-align:center; background-color:rgba(249,228,147,255);">Nozzle<br>6</th>
+                                <th style="text-align:center; background-color:rgba(249,228,147,255);">Nozzle<br>9</th>
+                                <th style="text-align:center; background-color:rgba(249,228,147,255);">Nozzle<br>10</th>
                                 <th style="text-align:center;">Remarks</th>
-                                <!--This is a  header column of Spray time(s)-->
                                 <th style="text-align:center;">Operation</th>
-                                <!--This is a  header column of Spray time(s)-->
                             </tr>
                         </thead>
                         <tbody>
@@ -934,59 +990,70 @@ if (!$result) {
                         </tbody>
                     </table>
                 </div>
-            </div>
+                <!-- Collapsible Drawer -->
 
-            <!--Top menu -->
-            <div class="sidebar">
-                <!--profile image & text-->
-                <div class="profile">
-                    <img src="IMAGES/logo.jpg" alt="profile_picture">
-                    <h3>Mindanao Container Corporation</h3>
-                    <!--<p>purok-8,Villanueva,Mis or.</p> -->
+                <div class="col-2 position-relative">
+                    <div class="drawer p-2" id="drawer">
+                        <i class="fa-solid fa-angles-left toggle-drawer" id="drawerToggle" onclick="toggleDrawer()"></i>
+                        <h4
+                            style="color:white; margin-top: 120px; margin-bottom: 100px; margin-left: 350px; margin-right: 30px;">
+                            Drawer Content</h4>
+                    </div>
                 </div>
-                <!--menu item-->
-                <ul>
-                    <li>
-                        <!-- Hidden hyperlink -->
-                        <a href="hidden_profile.php" style="display:none;">Hidden Link
-
-                        </a>
-                    </li>
-                    <li>
-                        <a href="profile.php" style="display:none;">
-                            <span class="icon"><i class="fa-solid fa-user"></i></span>
-                            <span class="item">Profile</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="dataEntry.php">
-                            <span class="icon"><i class="fa-solid fa-table-cells-large"></i></span>
-                            <span class="item">Dashboard</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="volume.php">
-                            <span class="icon"><i class="fa-solid fa-flask-vial"></i></span>
-                            <span class="item">Volume</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="monitoring.php" class="active">
-                            <span class="icon"><i class="fa-solid fa-chart-column"></i></span>
-                            <span class="item">Monitoring</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="report.php">
-                            <span class="icon"><i class="fa-regular fa-folder"></i></span>
-                            <span class="item">Reports</span>
-                        </a>
-                    </li>
-
-                </ul>
-
             </div>
         </div>
+
+        <!--Top menu -->
+        <div class="sidebar">
+            <!--profile image & text-->
+            <div class="profile">
+                <img src="IMAGES/logo.jpg" alt="profile_picture">
+                <h3>Mindanao Container Corporation</h3>
+                <!--<p>purok-8,Villanueva,Mis or.</p> -->
+            </div>
+            <!--menu item-->
+            <ul>
+                <li>
+                    <!-- Hidden hyperlink -->
+                    <a href="hidden_profile.php" style="display:none;">Hidden Link
+
+                    </a>
+                </li>
+                <li>
+                    <a href="profile.php" style="display:none;">
+                        <span class="icon"><i class="fa-solid fa-user"></i></span>
+                        <span class="item">Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="dataEntry.php">
+                        <span class="icon"><i class="fa-solid fa-table-cells-large"></i></span>
+                        <span class="item">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="volume.php">
+                        <span class="icon"><i class="fa-solid fa-flask-vial"></i></span>
+                        <span class="item">Volume</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="monitoring.php" class="active">
+                        <span class="icon"><i class="fa-solid fa-chart-column"></i></span>
+                        <span class="item">Monitoring</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="report.php">
+                        <span class="icon"><i class="fa-regular fa-folder"></i></span>
+                        <span class="item">Reports</span>
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
 
     </div>
 
@@ -1055,7 +1122,7 @@ if (!$result) {
         </div>
     </div>
 
-    
+
     <!--DATA TABLES-->
     <script>
         // Function to hide all columns
@@ -1108,6 +1175,17 @@ if (!$result) {
                 onUncheckAll: function () {
                     hideAllColumns();
                 }
+            });
+
+            $(document).ready(function () {
+                // Event delegation for delete button
+                $(document).on('click', '.confirm_dltbtn', function () {
+                    var userID = $(this).data('entry-id');
+
+                    // Assuming you're using Bootstrap modal for delete confirmation
+                    $('#deletemodal #confirm_delete_id').val(userID);
+                    $('#deletemodal').modal('show');
+                });
             });
         });
     </script>

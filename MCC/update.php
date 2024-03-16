@@ -744,6 +744,12 @@ if (isset($_POST['update'])) {
             position: relative;
         }
 
+         /*FOR READONLY OF YIELD */
+         .readonlyInput {
+           pointer-events: none; /* Prevents mouse clicks */
+           background-color: #f0f0f0; /* Optional: visually indicate read-only state */
+       }
+
 
 
         /*FOR SYSTEM RESPONSIVE */
@@ -952,14 +958,14 @@ if (isset($_POST['update'])) {
 
                                     <br><br>
                                     <label style="margin-left:50px;">Paint:</label>
-                                    <input type="number" style="text-align: center;" class="input1" id="paintYield"
-                                        name="paintYield" min="0" step="any" autocomplete="off"
-                                        value="<?php echo $paintYield; ?>">
+                                    <input type="number" style="text-align: center; border: none !important; outline: none !important;" class="readonlyInput input1" id="paintYield"
+                                        name="paintYield" min="0" step="any" 
+                                        value="<?php echo $paintYield; ?>"readonly>
                                     <br>
                                     <label style="margin-left:35px;">Acetate:</label>
-                                    <input type="number" style="text-align: center;" class="input1" id="acetateYield"
-                                        name="acetateYield" min="0" step="any" autocomplete="off"
-                                        value="<?php echo $acetateYield; ?>">
+                                    <input type="number" style="text-align: center; border: none !important; outline: none !important;" class="readonlyInput input1" id="acetateYield"
+                                        name="acetateYield" min="0" step="any"
+                                        value="<?php echo $acetateYield; ?>"readonly>
                                     <br>
                                 </div>
                                 <br><br>
