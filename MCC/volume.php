@@ -26,12 +26,16 @@ $Profile_image = $row['Profile_image'];
 
 // Fetch and check the data from the database using a JOIN query
 $sql = "SELECT
-    paint.paint_color,
-    supplier.supplier_name,
-    entry.*
-    FROM tbl_entry AS entry
-    LEFT JOIN tbl_paint AS paint ON entry.paintID = paint.paintID
-    LEFT JOIN tbl_supplier AS supplier ON paint.supplierID = supplier.supplierID";
+paint.paint_color,
+supplier.supplier_name,
+entry.*
+FROM tbl_entry AS entry
+LEFT JOIN tbl_paint AS paint ON entry.paintID = paint.paintID
+LEFT JOIN tbl_supplier AS supplier ON paint.supplierID = supplier.supplierID
+ORDER BY
+entry.EntryID DESC,
+paint.paintID DESC,
+supplier.supplierID DESC";
 
 $result = mysqli_query($con, $sql);
 
@@ -1071,70 +1075,69 @@ if (!$result) {
 
     <!--DATA TABLES-->
     <script>
-        // Function to hide all columns
-        function hideAllColumns() {
-            for (var i = 0; i < 23; i++) {
-                $('#datatables').DataTable().column(i).visible(false);
-            }
+    // Function to hide all columns
+    function hideAllColumns() {
+        for (var i = 0; i < 23; i++) {
+            $('#datatables').DataTable().column(i).visible(false);
         }
+    }
 
-        // Function to show all columns
-        function showAllColumns() {
-            for (var i = 0; i < 23; i++) {
-                $('#datatables').DataTable().column(i).visible(true);
-            }
+    // Function to show all columns
+    function showAllColumns() {
+        for (var i = 0; i < 23; i++) {
+            $('#datatables').DataTable().column(i).visible(true);
         }
+    }
 
-        $(document).ready(function () {
-            // Initialize DataTable
-            $('#datatables').DataTable({
-                scrollX: true,
-                scrollY: true,
-                dom: 'Bfrtip',
-                buttons: [
-                    'copy', 'excel', 'print',
-                    {
-                        extend: 'pdf',
-                        orientation: 'landscape',
-                        pageSize: 'LEGAL'
-                    }
-                ]
-            });
-
-
-
-            // Initialize multiple-select plugin
-            $('#toggle_column').multipleSelect({
-                width: 240,
-                onClick: function () {
-                    var selectedItems = $('#toggle_column').multipleSelect("getSelects");
-                    hideAllColumns();
-                    for (var i = 0; i < selectedItems.length; i++) {
-                        var s = selectedItems[i];
-                        $('#datatables').DataTable().column(s).visible(true);
-                    }
-                },
-                onCheckAll: function () {
-                    showAllColumns();
-                    $('#datatables').css('width', '100%');
-                },
-                onUncheckAll: function () {
-                    hideAllColumns();
+    $(document).ready(function () {
+        // Initialize DataTable
+        $('#datatables').DataTable({
+            scrollX: true,
+            scrollY: true,
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'excel', 'print',
+                {
+                    extend: 'pdf',
+                    orientation: 'landscape',
+                    pageSize: 'LEGAL'
                 }
-            });
-
-            $(document).ready(function () {
-                // Event delegation for delete button
-                $(document).on('click', '.confirm_dltbtn', function () {
-                    var userID = $(this).data('entry-id');
-
-                    // Assuming you're using Bootstrap modal for delete confirmation
-                    $('#deletemodal #confirm_delete_id').val(userID);
-                    $('#deletemodal').modal('show');
-                });
-            });
+            ],
+            // Set initial sorting order
+            order: [[0, 'desc']]
         });
-    </script>
+
+        // Initialize multiple-select plugin
+        $('#toggle_column').multipleSelect({
+            width: 240,
+            onClick: function () {
+                var selectedItems = $('#toggle_column').multipleSelect("getSelects");
+                hideAllColumns();
+                for (var i = 0; i < selectedItems.length; i++) {
+                    var s = selectedItems[i];
+                    $('#datatables').DataTable().column(s).visible(true);
+                }
+            },
+            onCheckAll: function () {
+                showAllColumns();
+                $('#datatables').css('width', '100%');
+            },
+            onUncheckAll: function () {
+                hideAllColumns();
+            }
+        });
+
+        // Event delegation for delete button
+        $(document).on('click', '.confirm_dltbtn', function () {
+            var userID = $(this).data('entry-id');
+
+            // Assuming you're using Bootstrap modal for delete confirmation
+            $('#deletemodal #confirm_delete_id').val(userID);
+            $('#deletemodal').modal('show');
+        });
+    });
+</script>
+
 
 
 

@@ -1043,12 +1043,7 @@ if (isset($_POST['update'])) {
                             <span class="item">Monitoring</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="report.php">
-                        <span class="icon"><i class="fa-regular fa-folder"></i></span>
-                            <span class="item">Reports</span>
-                        </a>
-                    </li>
+                    
 
                 </ul>
 

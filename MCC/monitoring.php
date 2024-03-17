@@ -25,13 +25,19 @@ $Profile_image = $row['Profile_image'];
 
 // Fetch and check the data from the database using a JOIN query
 $sql = "SELECT
-    paint.paint_color,
-    supplier.supplier_name, supplier.newSupplier_name,
-    customer.customer_name,entry.*
-    FROM tbl_entry AS entry         /*target the table with foreign key*/
-    LEFT JOIN tbl_paint AS paint ON entry.paintID = paint.paintID
-    LEFT JOIN tbl_supplier AS supplier ON paint.supplierID = supplier.supplierID
-    LEFT JOIN tbl_customer AS customer ON entry.customerID = customer.customerID";
+paint.paint_color,
+supplier.supplier_name, supplier.newSupplier_name,
+customer.customer_name,
+entry.*
+FROM tbl_entry AS entry
+LEFT JOIN tbl_paint AS paint ON entry.paintID = paint.paintID
+LEFT JOIN tbl_supplier AS supplier ON paint.supplierID = supplier.supplierID
+LEFT JOIN tbl_customer AS customer ON entry.customerID = customer.customerID
+ORDER BY
+entry.EntryID DESC,
+paint.paintID DESC,
+supplier.supplierID DESC,
+customer.customerID DESC";
 
 $result = mysqli_query($con, $sql);
 
@@ -784,7 +790,7 @@ if (!$result) {
                             <option value="16">Quantity (Du)</option>
                             <option value="17">Paint Yield</option>
                             <option value="18">Acetate Yield</option>
-                            
+
                             <option value="19">Remarks</option>
                             <option value="20">Operation</option>
                         </select>
@@ -817,8 +823,8 @@ if (!$result) {
                                     Production Output
                                 </th>
                                 <th colspan="2" style="text-align:center; background-color:#007BFF;">Yield</th>
-                                
-                                
+
+
                                 <th colspan="2" style="text-align:center;">Remarks & Operation</th>
 
                             </tr>
@@ -928,7 +934,7 @@ if (!$result) {
                                 echo "<td>{$row['quantity']}</td>";
                                 echo "<td style='color:blue;'>$roundedPaintYield</td>";
                                 echo "<td style='color:blue;'>$roundedAcetateYield</td>";
-                        
+
                                 echo "<td>{$row['remarks']}</td>";
                                 echo "<td class='crud'><div style='display: flex; gap: 10px;'>
                                 <a href='update.php?data-entry-id={$row['EntryID']}'><button class='btn btn-info text-light'>Edit</button></a>
@@ -987,7 +993,7 @@ if (!$result) {
             </div>
             <!--menu item-->
             <ul>
-            
+
                 <li>
                     <a href="profile.php" style="display:none;">
                         <span class="icon"><i class="fa-solid fa-user"></i></span>
@@ -1088,70 +1094,69 @@ if (!$result) {
 
     <!--DATA TABLES-->
     <script>
-        // Function to hide all columns
-        function hideAllColumns() {
-            for (var i = 0; i < 21; i++) {
-                $('#datatables').DataTable().column(i).visible(false);
-            }
+    // Function to hide all columns
+    function hideAllColumns() {
+        for (var i = 0; i < 21; i++) {
+            $('#datatables').DataTable().column(i).visible(false);
         }
+    }
 
-        // Function to show all columns
-        function showAllColumns() {
-            for (var i = 0; i < 21; i++) {
-                $('#datatables').DataTable().column(i).visible(true);
-            }
+    // Function to show all columns
+    function showAllColumns() {
+        for (var i = 0; i < 21; i++) {
+            $('#datatables').DataTable().column(i).visible(true);
         }
+    }
 
-        $(document).ready(function () {
-            // Initialize DataTable
-            $('#datatables').DataTable({
-                scrollX: true,
-                scrollY: true,
-                dom: 'Bfrtip',
-                buttons: [
-                    'copy', 'excel', 'print',
-                    {
-                        extend: 'pdf',
-                        orientation: 'landscape',
-                        pageSize: 'LEGAL'
-                    }
-                ]
-            });
-
-
-
-            // Initialize multiple-select plugin
-            $('#toggle_column').multipleSelect({
-                width: 200,
-                onClick: function () {
-                    var selectedItems = $('#toggle_column').multipleSelect("getSelects");
-                    hideAllColumns();
-                    for (var i = 0; i < selectedItems.length; i++) {
-                        var s = selectedItems[i];
-                        $('#datatables').DataTable().column(s).visible(true);
-                    }
-                },
-                onCheckAll: function () {
-                    showAllColumns();
-                    $('#datatables').css('width', '100%');
-                },
-                onUncheckAll: function () {
-                    hideAllColumns();
+    $(document).ready(function () {
+        // Initialize DataTable
+        $('#datatables').DataTable({
+            scrollX: true,
+            scrollY: true,
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'excel', 'print',
+                {
+                    extend: 'pdf',
+                    orientation: 'landscape',
+                    pageSize: 'LEGAL'
                 }
-            });
-
-            $(document).ready(function () {
-                // Event delegation for delete button
-                $(document).on('click', '.confirm_dltbtn', function () {
-                    var userID = $(this).data('entry-id');
-
-                    // Assuming you're using Bootstrap modal for delete confirmation
-                    $('#deletemodal #confirm_delete_id').val(userID);
-                    $('#deletemodal').modal('show');
-                });
-            });
+            ],
+            // Set initial sorting order
+            order: [[0, 'desc']]
         });
-    </script>
+
+        // Initialize multiple-select plugin
+        $('#toggle_column').multipleSelect({
+            width: 200,
+            onClick: function () {
+                var selectedItems = $('#toggle_column').multipleSelect("getSelects");
+                hideAllColumns();
+                for (var i = 0; i < selectedItems.length; i++) {
+                    var s = selectedItems[i];
+                    $('#datatables').DataTable().column(s).visible(true);
+                }
+            },
+            onCheckAll: function () {
+                showAllColumns();
+                $('#datatables').css('width', '100%');
+            },
+            onUncheckAll: function () {
+                hideAllColumns();
+            }
+        });
+
+        // Event delegation for delete button
+        $(document).on('click', '.confirm_dltbtn', function () {
+            var userID = $(this).data('entry-id');
+
+            // Assuming you're using Bootstrap modal for delete confirmation
+            $('#deletemodal #confirm_delete_id').val(userID);
+            $('#deletemodal').modal('show');
+        });
+    });
+</script>
+
 
     <!--FOR CLOCK SCRIPT-->
     <script>
