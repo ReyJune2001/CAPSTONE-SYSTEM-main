@@ -498,7 +498,7 @@ if (isset ($_POST['submit'])) {
         /*MAIN CONTENT */
 
         .main1 {
-            background-color: rgb(225, 225, 212);
+            background-color: gray;
             padding: 3%;
 
             flex: 1 1 150px;
@@ -519,34 +519,36 @@ if (isset ($_POST['submit'])) {
         }
 
         header {
-            background-color: rgb(25, 142, 214);
-            padding: 2em 0 2em 0;
+            font-size: 30px;
+            padding-bottom: 1%;
             text-align: center;
-        }
-
-        .left {
-            background-color: yellow;
-            padding: 3em 0 3em 0;
-            flex: 1 1 100px;
-            margin-left: auto;
-            text-align: center;
-
+            color: white;
         }
 
         main {
+            
             background-color: white;
-            padding: 3em 0 3em 0;
             flex: 1 1 150px;
             text-align: center;
 
         }
 
         .right {
+            height: 400px;
             background-color: rgb(0, 255, 38);
             padding: 3em 0 3em 0;
-            flex: 1 1 100px;
+            flex: 1 1 20px;
             margin-right: auto;
             text-align: center;
+            border-radius: 20px;
+
+            background-image: url('IMAGES/morningbackground.jpg'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+            background-size: cover; /* Ensures the background image covers the entire box */
+            background-repeat: no-repeat; /* Prevents the background image from repeating */
+            background-position: center; /* Centers the background image */
+            background-size: 800px;
+            
+        
 
         }
 
@@ -589,7 +591,7 @@ if (isset ($_POST['submit'])) {
             width: 295px;
             height: 180px;
             position: absolute;
-            top: 12%;
+            top: 60%;
             left: 80%;
             transform: translate(-50%, -50%);
 
@@ -607,7 +609,7 @@ if (isset ($_POST['submit'])) {
         }
 
         .clock span {
-            font-size: 22px;
+            font-size: 30px;
             width: 30px;
             display: inline-block;
             text-align: center;
@@ -736,6 +738,22 @@ if (isset ($_POST['submit'])) {
 
         }
 
+        .vertical-line1 {
+            width: 4px;
+            /* Adjust the width of the line as needed */
+            height: 15vh;
+            /* Sets the height to be the full height of the viewport */
+            background-color: gray;
+            /* Change the color of the line */
+            position: absolute;
+
+            left: 50%;
+            /* Position the line in the center horizontally */
+            transform: translateX(-50%);
+            /* Adjusts the position to the center */
+
+        }
+
         .boxstyle {
             display: flex;
             flex-direction: row;
@@ -749,7 +767,7 @@ if (isset ($_POST['submit'])) {
 
         }
 
-        .box {
+        .mainbox {
 
             width: 25%;
             height: 80px;
@@ -760,7 +778,7 @@ if (isset ($_POST['submit'])) {
             text-align: center;
         }
 
-        .box1 {
+        .boxYield {
             background-color: white;
         }
 
@@ -811,6 +829,75 @@ if (isset ($_POST['submit'])) {
             /* Adjust this value to change the size of the caret icon */
         }
 
+        .M-container {
+        
+         display: flex;
+         flex-direction: row; /* Boxes will be arranged horizontally */
+         align-items: center; /* Center vertically on the cross axis */
+         height: 100%; /* Full viewport height */
+         background-color: gray;
+         
+        }
+
+
+        .xbox1 {
+        width: 50%;
+        height: 190px;
+        padding: 10px;
+        padding-left: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: center;
+        margin-right: 20px;
+        border-radius: 20px;
+        
+        }
+        .xbox2 {
+        width: 50%;
+        height: 190px;
+        padding: 10px;
+        padding-left: 10px;
+        margin-right: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: center;
+        border-radius: 20px;
+        
+        }
+        .xbox3 {
+        width: 50%;
+        height: 190px;
+        padding: 10px;
+        padding-left: 10px;
+        margin-right: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: center;
+        border-radius: 20px;
+        
+        }
+
+        .box1 {
+        background-image: url('IMAGES/dataentry.png'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+        background-size: cover; /* Ensures the background image covers the entire box */
+        background-repeat: no-repeat; /* Prevents the background image from repeating */
+        background-position: center; /* Centers the background image */
+        background-size: 140px;
+        background-color: white;
+       
+
+        }
+ 
+
+        .box2 {
+        background-color: white;
+        }
+
+        .box3 {
+        background-color: white;
+        
+        }
+
 
 
         /*FOR SYSTEM RESPONSIVE */
@@ -823,18 +910,6 @@ if (isset ($_POST['submit'])) {
         <div class="section">
 
             <div class="admin_profile">
-                <!--FOR CLOCK-->
-                <div class="clockcontainer">
-                    <div class="clock">
-                        <span id="hrs"></span>
-                        <span>:</span>
-                        <span id="min"></span>
-                        <span>:</span>
-                        <span id="sec"></span>
-                        <span id="ampm"></span>
-
-                    </div>
-                </div>
 
                 <img src="uploaded_image/<?php echo $Profile_image; ?>" class="img-admin" id="image">
 
@@ -869,13 +944,44 @@ if (isset ($_POST['submit'])) {
 
             <!--MAIN CONTENT-->
             <div class="main1">
-                <header>Header content</header>
+                <header>Paint - Acetate Yield Monitoring System</header>
                 <div class="main2">
-                    <aside class="left">Left content</aside>
+                    
                     <main>
-                        <button type="button" class="btn btn-primary" id="dataentry">Data Entry <i
-                                class="fa-regular fa-square-plus"></i></button>
+                    <div class="M-container">
+                        <div class="xbox1 box1">
+                            <h5 style="">Data Entry</h5>
+                            <input type="number" style=" display:absolute; width:80px;height:30px; text-align:center; border:none; background-color:white; margin-right:200px; margin-top:25px; font-size:25px;">
+                            <button type="button" class="btn btn-primary" style="height:62px; width:62px; border-radius:50px; margin-left:70px; margin-top:1px;" id="dataentry">
+                            <i class="fa-solid fa-plus" style="font-size:40px;"></i></button>
+                            <h6 style="">Total Entries</h6>
+                           
+                            
+                            
+                        </div>
+                        <div class="xbox2 box2">
+                        <h5 style="">Total Drum Painted</h5>
+                        <input type="number" style="display: block; margin: 20px auto; width: 150px; height: 50px; text-align: center; border: none; background-color:white; font-size: 40px;">
+                        <button class="btn btn-success" style="font-size:20px; border-radius: 50px; width:150px;">Add new</button>
+                        </div>
+                        <div class="xbox3 box3">
+                        <h5 style="">Yield</h5>
+                        <label style="margin-left:17px;">Paint&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Acetate
+                        <span class="vertical-line1" style="margin-left:90px;"></span></label>
+                        <input type="number"
+                         style="text-align: center; height:50px; margin-left:30px; font-size: 26px; width: 41%; border: none !important; outline: none !important;"
+                         class="readonlyInput styleform" id="paintYield"
+                         min="0" step="any" name="paintYield"
+                         value="<?php echo $paintYield; ?>">
 
+                         <input type="number"
+                         style="text-align: center;margin-left:5px; height:50px; font-size: 26px; width: 41%;  border: none !important; outline: none !important;"
+                         class="readonlyInput styleform" id="acetateYield"
+                         min="0" step="any" name="acetateYield"
+                         value="<?php echo $acetateYield; ?>">
+                        </div>
+                    </div>
+                        
                         <!-- Data Entry modal -->
 
                         <div class="modal fade" id="initialmodal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -1109,7 +1215,7 @@ if (isset ($_POST['submit'])) {
                                                         </div>
 
                                                         <div class="boxstyle">
-                                                            <div class="box box1">
+                                                            <div class="mainbox boxYield">
                                                                 <label
                                                                     style="margin-left:17px;">Paint&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Acetate<span
                                                                         class="vertical-line"></span></label><br>
@@ -1146,7 +1252,25 @@ if (isset ($_POST['submit'])) {
                             </div>
                         </div>
                     </main>
-                    <aside class="right">Right content</aside>
+                    <aside class="right">
+                        <h1>Good Morning, <?php echo $Name; ?> !</h1>
+                        <!--FOR CLOCK-->
+                    <div class="clockcontainer">
+                    <div class="clock">
+                        <span id="hrs"></span>
+                        <span>:</span>
+                        <span id="min"></span>
+                        <span>:</span>
+                        <span id="sec"></span>
+                        <span id="ampm"></span>
+
+                    </div>
+                    </div>
+                    <br><br><br>
+                    <!-- Date -->
+                    <h2><?php echo date("l, F j, Y"); ?></h2>
+                
+                    </aside>
 
                 </div>
                 <footer>Footer content</footer>

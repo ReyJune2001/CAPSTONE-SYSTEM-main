@@ -804,7 +804,7 @@ if (!$result) {
                     <table id="datatables" class="display" style="width:100%;">
                         <thead>
                             <tr>
-                                <th colspan="13" style="text-align:center; background-color:rgba(113,187,234,255);">
+                                <th colspan="14" style="text-align:center; background-color:rgba(113,187,234,255);">
                                     Initial Inventory
                                 </th>
                                 <th colspan="10" style="text-align:center; background-color:rgba(255,217,110,255);">
@@ -814,6 +814,7 @@ if (!$result) {
                             </tr>
 
                             <tr>
+                                <th style="text-align:center; background-color: rgba(113,187,234,255);">User</th>
                                 <th style="text-align:center; background-color: rgba(113,187,234,255);">Date</th>
                                 <th style="text-align:center; background-color: rgba(113,187,234,255);">Paint Color</th>
                                 <th style="text-align:center; background-color: rgba(113,187,234,255);">Supplier</th>
@@ -914,6 +915,7 @@ if (!$result) {
                                 mysqli_query($con, $insertQuery);
 
                                 echo "<tr class='edit-row' data-entry-id='{$row['EntryID']}'>";
+                                echo "<td>$Username</td>";
                                 echo "<td class='date-cell'>{$row['date']}</td>";
                                 echo "<td>{$row['paint_color']}</td>";
                                 echo "<td>{$row['supplier_name']}</td>";
@@ -1015,7 +1017,7 @@ if (!$result) {
     <div class="modal" id="deletemodal">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header" style="background-color: red; color: white;">
+                <div class="modal-header" style="background-color: #dc3545; color: white;">
                     <h5 class="modal-title center-modal-title">DELETE</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
@@ -1104,7 +1106,10 @@ if (!$result) {
                 }
             ],
             // Set initial sorting order
-            order: [[0, 'desc']]
+            order: [[0, 'desc']],
+            language: {
+            searchPlaceholder: 'Search...' // Set placeholder text for search input
+        }
         });
 
         // Initialize multiple-select plugin

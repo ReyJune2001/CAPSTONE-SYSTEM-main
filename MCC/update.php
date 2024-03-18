@@ -672,31 +672,7 @@ if (isset($_POST['update'])) {
             margin-left: 45px;
         }
 
-
-        /*FOR UPDATE SUCCESSFUL */
-        /* Customize modal styles */
-        .custom-modal .modal-content {
-            background-color: green;
-            /* Background color */
-            color: #fff;
-            /* Text  color */
-        }
-
-        .custom-modal .modal-header {
-            border-bottom: 1px solid #2c3e50;
-            /* Border color for the header */
-        }
-
-        /*HEADER MODAL OF UPDATE */
-        .center-modal-title {
-            font-size: 30px;
-            margin-left: 175px;
-        }
-
-        .custom-modal .modal-footer {
-            border-top: 1px solid #2c3e50;
-            /* Border color for the footer */
-        }
+       
 
         /* Style for the select option in admin profile */
         .dropdown {
@@ -752,6 +728,14 @@ if (isset($_POST['update'])) {
        }
 
 
+        /* Adjust the show up in delete modal*/
+
+        #updateSuccessModal {
+            top: 30%;
+            /* Adjust this value as needed */
+            transform: translateY(-50%, -50%);
+            height: 50%;
+        }
 
         /*FOR SYSTEM RESPONSIVE */
     </style>
@@ -1060,12 +1044,12 @@ if (isset($_POST['update'])) {
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title center-modal-title" id="exampleModalLabel">Congrats!!!</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-header" style="background-color: #2eae3d; color: white;">
+                    <h5 class="modal-title center-modal-title">DATA INSERTED</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <h5 style="text-align:center;">Your Entry data has been added successfully!</h5>
+                    <h5 style="text-align:center;">Your Entry data has been inserted successfully!</h5>
                 </div>
                 <div class="modal-footer">
                     <a href="volume.php" class="btn btn-primary">OK</a>
