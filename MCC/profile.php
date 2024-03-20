@@ -476,7 +476,7 @@ if (isset($_POST['submit'])) {
 
        /* FOR CLOCK */
 
-       .clockcontainer {
+        .clockcontainer {
             width: 295px;
             height: 180px;
             position: absolute;
@@ -503,6 +503,9 @@ if (isset($_POST['submit'])) {
             display: inline-block;
             text-align: center;
             position: relative;
+        }
+        #ampm{
+            margin-left: 10px;
         }
 
         /*FOR SYSTEM RESPONSIVE */

@@ -626,6 +626,9 @@ if (!$result) {
             text-align: center;
             position: relative;
         }
+        #ampm{
+            margin-left: 10px;
+        }
 
         /*FOR MULTIPLE SELECT*/
         span.placeholder {

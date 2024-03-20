@@ -166,10 +166,18 @@ if (isset ($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--FOR FONT STYLE-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalnia:wght@700&family=Noto+Serif+Makasar&family=Pattaya&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalnia:wght@700&family=Noto+Serif+Makasar&family=Pattaya&family=Tiro+Kannada:ital@0;1&display=swap" rel="stylesheet">
+
+
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -191,7 +199,10 @@ if (isset ($_POST['submit'])) {
     <!-- Font Awesome JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 
-
+    <!-- For trend chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
     <script>
         // Check if the drawer is initially open
         document.addEventListener("DOMContentLoaded", function () {
@@ -519,7 +530,8 @@ if (isset ($_POST['submit'])) {
         }
 
         header {
-            font-size: 30px;
+            font-family: "Pattaya", sans-serif;
+            font-size: 40px;
             padding-bottom: 1%;
             text-align: center;
             color: white;
@@ -527,31 +539,43 @@ if (isset ($_POST['submit'])) {
 
         main {
             
-            background-color: white;
-            flex: 1 1 150px;
+            background-color: gray;
+            flex: 1 1 110px;
             text-align: center;
 
         }
 
         .right {
-            height: 400px;
+            height: 190px;
             background-color: rgb(0, 255, 38);
             padding: 3em 0 3em 0;
             flex: 1 1 20px;
             margin-right: auto;
             text-align: center;
             border-radius: 20px;
-
+            
             background-image: url('IMAGES/morningbackground.jpg'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
             background-size: cover; /* Ensures the background image covers the entire box */
             background-repeat: no-repeat; /* Prevents the background image from repeating */
             background-position: center; /* Centers the background image */
-            background-size: 800px;
+            background-size: cover;
             
-        
-
         }
 
+        /* Pseudo-element for dark opacity */
+.right::before {
+    content: '';
+    position: absolute;
+    top: 276px;
+    left: 1222px;
+    width: 745px;
+    height: 190px;
+    background-color: rgba(0, 0, 0, 0.2); /* Adjust the opacity level as needed */
+    border-radius: inherit; /* Inherit border-radius from parent */
+}
+        .morning{
+            font-family: "Pattaya", sans-serif;
+        }
         footer {
             background-color: darkcyan;
             text-align: center;
@@ -585,14 +609,14 @@ if (isset ($_POST['submit'])) {
             text-align: center;
         }
 
-        /* FOR CLOCK */
+         /* FOR CLOCK */
 
-        .clockcontainer {
+         .clockcontainer {
             width: 295px;
             height: 180px;
             position: absolute;
-            top: 60%;
-            left: 80%;
+            top: 51%;
+            left: 79%;
             transform: translate(-50%, -50%);
 
 
@@ -600,7 +624,7 @@ if (isset ($_POST['submit'])) {
 
         .clock {
 
-            color: black;
+            
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -609,11 +633,15 @@ if (isset ($_POST['submit'])) {
         }
 
         .clock span {
+            font-weight: bold;
             font-size: 30px;
             width: 30px;
             display: inline-block;
             text-align: center;
             position: relative;
+        }
+        #ampm{
+            margin-left: 10px;
         }
 
         /*FOR DATA ENTRY */
@@ -747,7 +775,7 @@ if (isset ($_POST['submit'])) {
             /* Change the color of the line */
             position: absolute;
 
-            left: 50%;
+            left: 1001px;
             /* Position the line in the center horizontally */
             transform: translateX(-50%);
             /* Adjusts the position to the center */
@@ -834,30 +862,30 @@ if (isset ($_POST['submit'])) {
          display: flex;
          flex-direction: row; /* Boxes will be arranged horizontally */
          align-items: center; /* Center vertically on the cross axis */
-         height: 100%; /* Full viewport height */
+         
          background-color: gray;
          
         }
 
 
         .xbox1 {
-        width: 50%;
+        width: 40%;
         height: 190px;
         padding: 10px;
         padding-left: 10px;
+        margin-right: 18px;
         padding-top: 10px;
         padding-bottom: 10px;
         text-align: center;
-        margin-right: 20px;
         border-radius: 20px;
         
         }
         .xbox2 {
-        width: 50%;
+        width: 40%;
         height: 190px;
         padding: 10px;
         padding-left: 10px;
-        margin-right: 20px;
+        margin-right: 18px;
         padding-top: 10px;
         padding-bottom: 10px;
         text-align: center;
@@ -865,11 +893,11 @@ if (isset ($_POST['submit'])) {
         
         }
         .xbox3 {
-        width: 50%;
+        width: 40%;
         height: 190px;
         padding: 10px;
         padding-left: 10px;
-        margin-right: 20px;
+        margin-right: 18px;
         padding-top: 10px;
         padding-bottom: 10px;
         text-align: center;
@@ -877,19 +905,63 @@ if (isset ($_POST['submit'])) {
         
         }
 
+        .xbox4 {
+        width: 820px;
+        height: 500px;
+        margin-top:20px;
+        text-align: center;
+        border-radius: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+        }
+
+        .xbox5 {
+        margin-top: 68px;
+        width: 100%;
+        height: 500px;
+        text-align: center;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        }
+        .xbox6 {
+        margin-top:20px;
+        width: 820px;
+        height: 500px;
+        text-align: center;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        }
+        .xbox7 {
+        margin-top: 20px;
+        width: 100%;
+        height: 500px;
+        text-align: center;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        }
+        .xbox8 {
+        margin-top:20px;
+        width: 820px;
+        height: 500px;
+        text-align: center;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        margin-left: 25%;
+        
+        }
+
         .box1 {
+            background-color: white;
+        }
+ 
+
+        .box2 {
+        
         background-image: url('IMAGES/dataentry.png'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
         background-size: cover; /* Ensures the background image covers the entire box */
         background-repeat: no-repeat; /* Prevents the background image from repeating */
         background-position: center; /* Centers the background image */
         background-size: 140px;
-        background-color: white;
-       
-
-        }
- 
-
-        .box2 {
         background-color: white;
         }
 
@@ -897,7 +969,60 @@ if (isset ($_POST['submit'])) {
         background-color: white;
         
         }
+        .box4 {
+        background-color: white;
+        
+        }
+        .box5 {
+        background-color:white;
+        
+        }
+        .box6 {
+        background-color: white;
+        
+        }
+        .box7 {
+        background-color: white;
+        
+        }
+        .box8 {
+        background-color: white;
+        
+        }
+        
 
+
+        
+
+         /*FOR FILTER BAR */
+         .filterfield {
+            width: 150px;
+            height: 40px;
+            margin-left: 2%;
+            background-color: white;
+            border-color: #86b7fe;
+            border-radius: 5px;
+            margin-top: 10px;
+
+        }
+
+         /* Style for individual items */
+         .item {
+            width: 700px;
+            /* Set width for each item */
+            height: 500px;
+            /* Set height for each item */  
+        }
+        
+     
+
+        #piechart,#yieldChart{
+            margin-left:50px;
+            padding-right: 20px;
+            width: 100%;
+            height: 500px;
+        }
+       
 
 
         /*FOR SYSTEM RESPONSIVE */
@@ -950,38 +1075,52 @@ if (isset ($_POST['submit'])) {
                     <main>
                     <div class="M-container">
                         <div class="xbox1 box1">
-                            <h5 style="">Data Entry</h5>
-                            <input type="number" style=" display:absolute; width:80px;height:30px; text-align:center; border:none; background-color:white; margin-right:200px; margin-top:25px; font-size:25px;">
+                        <h5 style="">Total Drum Painted</h5>
+                        <input type="number" style="display: block; margin-top:40px; margin-left:10px; width: 200px; height: 50px; text-align: center; border: none; background-color:; font-size: 40px;">
+                    </div>
+                        <div class="xbox2 box2">
+                        <h5 style="">Data Entry</h5>
+                            <input type="number" style=" display:absolute; width:80px;height:30px; text-align:center; border:none; background-color:; margin-right:200px; margin-top:25px; font-size:25px;">
                             <button type="button" class="btn btn-primary" style="height:62px; width:62px; border-radius:50px; margin-left:70px; margin-top:1px;" id="dataentry">
                             <i class="fa-solid fa-plus" style="font-size:40px;"></i></button>
                             <h6 style="">Total Entries</h6>
-                           
-                            
-                            
-                        </div>
-                        <div class="xbox2 box2">
-                        <h5 style="">Total Drum Painted</h5>
-                        <input type="number" style="display: block; margin: 20px auto; width: 150px; height: 50px; text-align: center; border: none; background-color:white; font-size: 40px;">
-                        <button class="btn btn-success" style="font-size:20px; border-radius: 50px; width:150px;">Add new</button>
                         </div>
                         <div class="xbox3 box3">
-                        <h5 style="">Yield</h5>
-                        <label style="margin-left:17px;">Paint&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Acetate
+                        <h5 style="margin-left:12px;">Yield</h5>
+                        <label style="margin-left:20px;">Paint&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Acetate
                         <span class="vertical-line1" style="margin-left:90px;"></span></label>
+                        <br>
                         <input type="number"
-                         style="text-align: center; height:50px; margin-left:30px; font-size: 26px; width: 41%; border: none !important; outline: none !important;"
+                         style="text-align: center; background-color:; height:50px; margin-left:30px; font-size: 27px; width: 40%; border: none !important; outline: none !important;"
                          class="readonlyInput styleform" id="paintYield"
                          min="0" step="any" name="paintYield"
                          value="<?php echo $paintYield; ?>">
 
                          <input type="number"
-                         style="text-align: center;margin-left:5px; height:50px; font-size: 26px; width: 41%;  border: none !important; outline: none !important;"
+                         style="text-align: center; background-color:; height:50px; font-size: 27px; width: 40%;  border: none !important; outline: none !important;"
                          class="readonlyInput styleform" id="acetateYield"
                          min="0" step="any" name="acetateYield"
                          value="<?php echo $acetateYield; ?>">
                         </div>
                     </div>
-                        
+
+                    <div class="xbox4 box4">
+                        <h4>Daily Report</h4>
+                    
+                        <canvas id="areaChart"></canvas>
+                        <label style="margin-left:2%;">From date:</label>
+                        <input type="date" style="text-align: center;" class="filterfield" id="min" name="min" autocomplete="off">
+                        <label style="margin-left:3%;">To date:</label>
+                        <input type="date" style="text-align: center;" class="filterfield" id="max" name="max" autocomplete="off">
+                    </div>
+                <div class="xbox6 box6">
+                    <h4>Weekly Report</h4>
+                    <canvas id="weeklyChart"></canvas>
+                    <label style="margin-left:2%;">From week:</label>
+                    <input type="week" style="text-align: center;" class="filterfield3" id="min3" name="min3" autocomplete="off">
+                    <label style="margin-left:3%;">To week:</label>
+                    <input type="week" style="text-align: center;" class="filterfield3" id="max3" name="max3" autocomplete="off">
+                </div>
                         <!-- Data Entry modal -->
 
                         <div class="modal fade" id="initialmodal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -1252,28 +1391,56 @@ if (isset ($_POST['submit'])) {
                             </div>
                         </div>
                     </main>
+                    
                     <aside class="right">
-                        <h1>Good Morning, <?php echo $Name; ?> !</h1>
-                        <!--FOR CLOCK-->
-                    <div class="clockcontainer">
+                        <h1 class="morning" style="margin-bottom:10px;">Good Morning, <?php echo $Name; ?> !</h1>
+                        
+                     <!--FOR CLOCK-->
+                <div class="clockcontainer">
                     <div class="clock">
                         <span id="hrs"></span>
                         <span>:</span>
-                        <span id="min"></span>
+                        <span id="minutes"></span>
                         <span>:</span>
                         <span id="sec"></span>
                         <span id="ampm"></span>
 
                     </div>
-                    </div>
-                    <br><br><br>
+                </div>
                     <!-- Date -->
-                    <h2><?php echo date("l, F j, Y"); ?></h2>
+                    
+                    <h2 style="font-size:30px; font-weight: bold;"><?php echo date("l, F j, Y"); ?></h2>
+                    
+                   <div class="xbox5 box5">
+                    <!-- FOR PIE CHART -->
+                    <div class="item">
+                    <div id="piechart"></div>
+                    </div>
+                    
+                    </div>
+
+                    <div class="xbox7 box7">
+                        <h4>Monthly Report</h4>
+                        <!-- FOR MONTHLY BAR CHART -->
+                        <canvas id="yieldChart"></canvas>
+                        <label style="margin-left:2%;">From date:</label>
+                        <input type="month" style="text-align: center;" class="filterfield2" id="min2" name="min2" autocomplete="off">
+                        <label style="margin-left:3%;">To date:</label>
+                        <input type="month" style="text-align: center;" class="filterfield2" id="max2" name="max2" autocomplete="off">
+                    
+                    </div>
                 
                     </aside>
-
                 </div>
-                <footer>Footer content</footer>
+                <div class="xbox8 box8">
+                <h4 style="margin-left:px;">Yearly Report</h4>
+                <!-- FOR YEARLY BAR CHART -->
+                <canvas id="yearlyChart"></canvas>
+                <label style="margin-left:2%;">From year:</label>
+                <input type="number" style="text-align: center;" class="yearfield" id="from" name="from" autocomplete="off">
+                <label style="margin-left:3%;">To year:</label>
+                <input type="number" style="text-align: center;" class="yearfield" id="to" name="to" autocomplete="off">
+            </div>
             </div>
 
 
@@ -1324,6 +1491,370 @@ if (isset ($_POST['submit'])) {
 
 
     </div>
+
+
+<!--BAR CHART FOR YEAR-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+<script>
+    // PHP to fetch data
+    <?php
+    $sql = "SELECT SUM(paintYield) AS totalPaintYield, SUM(acetateYield) AS totalAcetateYield, YEAR(date) AS year FROM tbl_entry GROUP BY year";
+    $result = mysqli_query($con, $sql);
+    $data = [];
+    while ($row = mysqli_fetch_array($result)) {
+        $data[] = $row;
+    }
+    ?>
+
+    // JavaScript to format data for Chart.js
+    var years = [];
+    var totalPaintYields = [];
+    var totalAcetateYields = [];
+    
+    <?php foreach ($data as $row): ?>
+        years.push('<?php echo $row['year']; ?>');
+        totalPaintYields.push(<?php echo $row['totalPaintYield']; ?>);
+        totalAcetateYields.push(<?php echo $row['totalAcetateYield']; ?>);
+    <?php endforeach; ?>
+
+    var ctx = document.getElementById('yearlyChart').getContext('2d');
+
+    var yearlyChart;
+
+    function filterData() {
+        var minYear = document.getElementById('from').value;
+        var maxYear = document.getElementById('to').value;
+        
+        var filteredYears = [];
+        var filteredPaintYields = [];
+        var filteredAcetateYields = [];
+        
+        for (var i = 0; i < years.length; i++) {
+            if (years[i] >= minYear && years[i] <= maxYear) {
+                filteredYears.push(years[i]);
+                filteredPaintYields.push(totalPaintYields[i]);
+                filteredAcetateYields.push(totalAcetateYields[i]);
+            }
+        }
+        
+        yearlyChart.data.labels = filteredYears;
+        yearlyChart.data.datasets[0].data = filteredPaintYields;
+        yearlyChart.data.datasets[1].data = filteredAcetateYields;
+        yearlyChart.update();
+    }
+
+    // Attach event listeners to year inputs to trigger filtering in real-time
+    document.getElementById('from').addEventListener('input', filterData);
+    document.getElementById('to').addEventListener('input', filterData);
+
+    yearlyChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: years,
+            datasets: [{
+                label: 'Total Paint Yield',
+                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1,
+                data: totalPaintYields
+            }, {
+                label: 'Total Acetate Yield',
+                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1,
+                data: totalAcetateYields
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+
+<!--BAR BAR CHART FOR WEEK-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+<script>
+    // PHP to fetch data
+    <?php
+    $sql = "SELECT SUM(paintYield) AS totalPaintYield, SUM(acetateYield) AS totalAcetateYield, DATE_FORMAT(date, '%x-%v') AS week_year FROM tbl_entry GROUP BY week_year";
+    $result = mysqli_query($con, $sql);
+    $data = [];
+    while ($row = mysqli_fetch_array($result)) {
+        $data[] = $row;
+    }
+    ?>
+
+    // JavaScript to format data for Chart.js
+    var weeks = [];
+    var totalPaintYields = [];
+    var totalAcetateYields = [];
+    
+    <?php foreach ($data as $row): ?>
+        weeks.push('<?php echo $row['week_year']; ?>');
+        totalPaintYields.push(<?php echo $row['totalPaintYield']; ?>);
+        totalAcetateYields.push(<?php echo $row['totalAcetateYield']; ?>);
+    <?php endforeach; ?>
+
+    var ctx = document.getElementById('weeklyChart').getContext('2d');
+
+    var weeklyChart;
+
+    function filterData() {
+        var minDate = document.getElementById('min3').value;
+        var maxDate = document.getElementById('max3').value;
+        
+        var filteredWeeks = [];
+        var filteredPaintYields = [];
+        var filteredAcetateYields = [];
+        
+        for (var i = 0; i < weeks.length; i++) {
+            if (weeks[i] >= minDate && weeks[i] <= maxDate) {
+                filteredWeeks.push(weeks[i]);
+                filteredPaintYields.push(totalPaintYields[i]);
+                filteredAcetateYields.push(totalAcetateYields[i]);
+            }
+        }
+        
+        weeklyChart.data.labels = filteredWeeks;
+        weeklyChart.data.datasets[0].data = filteredPaintYields;
+        weeklyChart.data.datasets[1].data = filteredAcetateYields;
+        weeklyChart.update();
+    }
+
+    // Attach event listeners to date inputs to trigger filtering in real-time
+    document.getElementById('min3').addEventListener('input', filterData);
+    document.getElementById('max3').addEventListener('input', filterData);
+
+    weeklyChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: weeks,
+            datasets: [{
+                label: 'Total Paint Yield',
+                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1,
+                data: totalPaintYields
+            }, {
+                label: 'Total Acetate Yield',
+                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1,
+                data: totalAcetateYields
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+
+<!--BAR CHART FOR MONTH-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+<script>
+    // PHP to fetch data
+    <?php
+    $sql = "SELECT SUM(paintYield) AS totalPaintYield, SUM(acetateYield) AS totalAcetateYield, DATE_FORMAT(date, '%Y-%m') AS month_year FROM tbl_entry GROUP BY month_year";
+    $result = mysqli_query($con, $sql);
+    $data = [];
+    while ($row = mysqli_fetch_array($result)) {
+        $data[] = $row;
+    }
+    ?>
+
+    // JavaScript to format data for Chart.js
+    var months = [];
+    var totalPaintYields = [];
+    var totalAcetateYields = [];
+    
+    <?php foreach ($data as $row): ?>
+        months.push('<?php echo $row['month_year']; ?>');
+        totalPaintYields.push(<?php echo $row['totalPaintYield']; ?>);
+        totalAcetateYields.push(<?php echo $row['totalAcetateYield']; ?>);
+    <?php endforeach; ?>
+
+    var ctx = document.getElementById('yieldChart').getContext('2d');
+
+    var yieldChart;
+
+    function filterData() {
+        var minDate = document.getElementById('min2').value;
+        var maxDate = document.getElementById('max2').value;
+        
+        var filteredMonths = [];
+        var filteredPaintYields = [];
+        var filteredAcetateYields = [];
+        
+        for (var i = 0; i < months.length; i++) {
+            if (months[i] >= minDate && months[i] <= maxDate) {
+                filteredMonths.push(months[i]);
+                filteredPaintYields.push(totalPaintYields[i]);
+                filteredAcetateYields.push(totalAcetateYields[i]);
+            }
+        }
+        
+        yieldChart.data.labels = filteredMonths;
+        yieldChart.data.datasets[0].data = filteredPaintYields;
+        yieldChart.data.datasets[1].data = filteredAcetateYields;
+        yieldChart.update();
+    }
+
+    // Attach event listeners to date inputs to trigger filtering in real-time
+    document.getElementById('min2').addEventListener('input', filterData);
+    document.getElementById('max2').addEventListener('input', filterData);
+
+    yieldChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: months,
+            datasets: [{
+                label: 'Total Paint Yield',
+                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1,
+                data: totalPaintYields
+            }, {
+                label: 'Total Acetate Yield',
+                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1,
+                data: totalAcetateYields
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+
+
+<!--FOR PIE CHART-->
+<script type="text/javascript">
+                    google.charts.load('current', { 'packages': ['corechart'] });
+                    google.charts.setOnLoadCallback(drawCharts);
+
+                    function drawCharts() {
+                        drawPieChart();
+                    }
+
+                    function drawPieChart() {
+                        var data = google.visualization.arrayToDataTable([
+                            ['Category', 'Yield'],
+                            ['Nippon', 25],
+                            ['Treasure Island', 10],
+                            ['Inkote', 15],
+                            ['Century', 20]
+                        ]);
+
+                        var options = {
+                            title: 'Paint and Acetate Yield by Supplier'
+                        };
+
+                        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+                        chart.draw(data, options);
+                    }
+</script>
+
+<!-- FOR AREA CHART / line chart SCRIPT -->
+<script>
+    // PHP to fetch data
+    <?php
+    $sql = "SELECT paintYield, acetateYield, date FROM tbl_entry";
+    $result = mysqli_query($con, $sql);
+    $data = [];
+    while ($row = mysqli_fetch_array($result)) {
+        $data[] = $row;
+    }
+    ?>
+
+    // JavaScript to format data for Chart.js
+    var dates = [];
+    var paintYields = [];
+    var acetateYields = [];
+    
+    <?php foreach ($data as $row): ?>
+        dates.push('<?php echo $row['date']; ?>');
+        paintYields.push(<?php echo $row['paintYield']; ?>);
+        acetateYields.push(<?php echo $row['acetateYield']; ?>);
+    <?php endforeach; ?>
+
+    var ctx = document.getElementById('areaChart').getContext('2d');
+    var areaChart;
+
+    function filterData() {
+        var minDate = document.getElementById('min').value;
+        var maxDate = document.getElementById('max').value;
+        
+        var filteredDates = [];
+        var filteredPaintYields = [];
+        var filteredAcetateYields = [];
+        
+        for (var i = 0; i < dates.length; i++) {
+            if (dates[i] >= minDate && dates[i] <= maxDate) {
+                filteredDates.push(dates[i]);
+                filteredPaintYields.push(paintYields[i]);
+                filteredAcetateYields.push(acetateYields[i]);
+            }
+        }
+        
+        areaChart.data.labels = filteredDates;
+        areaChart.data.datasets[0].data = filteredPaintYields;
+        areaChart.data.datasets[1].data = filteredAcetateYields;
+        areaChart.update();
+    }
+
+    // Attach event listeners to date inputs to trigger filtering in real-time
+    document.getElementById('min').addEventListener('input', filterData);
+    document.getElementById('max').addEventListener('input', filterData);
+
+    areaChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: dates,
+            datasets: [{
+                label: 'Paint Yield',
+                backgroundColor: 'rgba(255, 99, 132, 0.4)',
+                borderColor: 'rgba(255, 99, 132, 2)',
+                borderWidth: 1,
+                data: paintYields,
+                fill: true
+            }, {
+                label: 'Acetate Yield',
+                backgroundColor: 'rgba(54, 162, 235, 0.4)',
+                borderColor: 'rgba(54, 162, 235, 2)',
+                borderWidth: 1,
+                data: acetateYields,
+                fill: true
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+
     <!--FOR REAL-TIME DATA OF YIELD-->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -1395,10 +1926,10 @@ if (isset ($_POST['submit'])) {
     </script>
 
 
-    <!--FOR CLOCK SCRIPT-->
-    <script>
+     <!--FOR CLOCK SCRIPT-->
+     <script>
         let hrs = document.getElementById("hrs");
-        let min = document.getElementById("min");
+        let minutes = document.getElementById("minutes");
         let sec = document.getElementById("sec");
         let ampm = document.getElementById("ampm");
 
@@ -1415,7 +1946,7 @@ if (isset ($_POST['submit'])) {
             }
 
             hrs.innerHTML = (hours < 10 ? "0" : '') + hours;
-            min.innerHTML = (currentTime.getMinutes() < 10 ? "0" : '') + currentTime.getMinutes();
+            minutes.innerHTML = (currentTime.getMinutes() < 10 ? "0" : '') + currentTime.getMinutes();
             sec.innerHTML = (currentTime.getSeconds() < 10 ? "0" : '') + currentTime.getSeconds();
             ampm.innerHTML = period;
         }, 1000)

@@ -486,90 +486,6 @@ if (isset($_POST['update'])) {
             margin-top: 10px;
         }
 
-        /*FOR VOLUME TABLE CONTENT */
-
-
-        table,
-        th,
-        td {
-            border: 1px solid black;
-            border-collapse: collapse;
-            text-align: center;
-
-            color: black;
-        }
-
-        .date-cell {
-            white-space: nowrap;
-        }
-
-        .paint-color-cell {
-            white-space: nowrap;
-        }
-
-        /*FOR TABLE CONTAINER */
-
-
-        .container3,
-        .container3-fluid,
-        .container3-lg,
-        .container3-md,
-        .container3-sm,
-        .container3-xl,
-        .container3-xxl {
-            --bs-gutter-x: 3.9rem;
-            --bs-gutter-y: 0;
-            width: 100%;
-            padding-right: calc(var(--bs-gutter-x) * .5);
-            padding-left: calc(var(--bs-gutter-x) * .5);
-            margin-top: 15px;
-            margin-right: auto;
-            margin-left: auto;
-            background-color: rgb(225, 225, 212);
-
-        }
-
-        /*FOR SEARCH BAR */
-        .searchfield {
-            width: 150px;
-            height: 30px;
-            margin-left: 5px;
-            background-color: rgb(225, 225, 212);
-            border-color: #86b7fe;
-            border-radius: 5px;
-
-        }
-
-        /*FOR FILTER BAR */
-        .filterfield {
-            width: 150px;
-            height: 30px;
-            margin-left: 5px;
-            background-color: rgb(225, 225, 212);
-            border-color: #86b7fe;
-            border-radius: 5px;
-        }
-
-        /*FOR SORT BAR */
-        .sortfield {
-            width: 150px;
-            height: 30px;
-            margin-left: 5px;
-            background-color: rgb(225, 225, 212);
-            border-color: #86b7fe;
-            border-radius: 5px;
-        }
-
-
-        /*Operation Button */
-
-        .btn_opt {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 50px;
-            margin-right: 32px;
-        }
-
         /*MAIN CONTENT */
 
         .main1 {
@@ -692,7 +608,7 @@ if (isset($_POST['update'])) {
 
          /* FOR CLOCK */
 
-         .clockcontainer {
+        .clockcontainer {
             width: 295px;
             height: 180px;
             position: absolute;
@@ -719,6 +635,9 @@ if (isset($_POST['update'])) {
             display: inline-block;
             text-align: center;
             position: relative;
+        }
+        #ampm{
+            margin-left: 10px;
         }
 
          /*FOR READONLY OF YIELD */
