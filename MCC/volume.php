@@ -728,7 +728,7 @@ if (!$result) {
                     <div class="clock">
                         <span id="hrs"></span>
                         <span>:</span>
-                        <span id="min"></span>
+                        <span id="minutes"></span>
                         <span>:</span>
                         <span id="sec"></span>
                         <span id="ampm"></span>
@@ -766,29 +766,30 @@ if (!$result) {
                         <label>Show / Hide columns:</label>
 
                         <select name="toggle_column" id="toggle_column" multiple>
-                            <option value="0">Date</option>
-                            <option value="1">Paint Color</option>
-                            <option value="2">Supplier</option>
-                            <option value="3">Batch Number</option>
-                            <option value="4">Pi</option>
-                            <option value="5">Diameter</option>
-                            <option value="6">Height</option>
-                            <option value="7">Conversion Factor</option>
-                            <option value="8">Volume</option>
-                            <option value="9">Paint Ratio</option>
-                            <option value="10">Acetate Ratio</option>
-                            <option value="11">Initial Paint (L)</option>
-                            <option value="12">Initial Acetate (L)</option>
-                            <option value="13">Ending Pi</option>
-                            <option value="14">Ending Diameter</option>
-                            <option value="15">Ending Height</option>
-                            <option value="16">Ending Conversion (F)</option>
-                            <option value="17">Ending Volume</option>
-                            <option value="18">Ending Paint Ratio</option>
-                            <option value="19">Ending Acetate Ratio</option>
-                            <option value="20">Ending Paint (L)</option>
-                            <option value="21">Ending Acetate (L)</option>
-                            <option value="22">Operation</option>
+                            <option value="0">User</option>
+                            <option value="1">Date</option>
+                            <option value="2">Paint Color</option>
+                            <option value="3">Supplier</option>
+                            <option value="4">Batch Number</option>
+                            <option value="5">Pi</option>
+                            <option value="6">Diameter</option>
+                            <option value="7">Height</option>
+                            <option value="8">Conversion Factor</option>
+                            <option value="9">Volume</option>
+                            <option value="10">Paint Ratio</option>
+                            <option value="11">Acetate Ratio</option>
+                            <option value="12">Initial Paint (L)</option>
+                            <option value="13">Initial Acetate (L)</option>
+                            <option value="14">Ending Pi</option>
+                            <option value="15">Ending Diameter</option>
+                            <option value="16">Ending Height</option>
+                            <option value="17">Ending Conversion (F)</option>
+                            <option value="18">Ending Volume</option>
+                            <option value="19">Ending Paint Ratio</option>
+                            <option value="20">Ending Acetate Ratio</option>
+                            <option value="21">Ending Paint (L)</option>
+                            <option value="22">Ending Acetate (L)</option>
+                            <option value="23">Operation</option>
                         </select>
 
                         <label style="margin-left:15%;">From date:</label>
@@ -1078,46 +1079,42 @@ if (!$result) {
         </div>
     </div>
 
-    <!--DATA TABLES-->
-    <script>
+     <!--DATA TABLES-->
+     <script>
     // Function to hide all columns
     function hideAllColumns() {
-        for (var i = 0; i < 23; i++) {
+        for (var i = 0; i < 24; i++) {
             $('#datatables').DataTable().column(i).visible(false);
         }
     }
 
     // Function to show all columns
     function showAllColumns() {
-        for (var i = 0; i < 23; i++) {
+        for (var i = 0; i < 24; i++) {
             $('#datatables').DataTable().column(i).visible(true);
         }
     }
 
     $(document).ready(function () {
         // Initialize DataTable
-        $('#datatables').DataTable({
+        let table = $('#datatables').DataTable({
             scrollX: true,
             scrollY: true,
             dom: 'Bfrtip',
             buttons: [
-                'copy', 'excel', 'print',
-                {
-                    extend: 'pdf',
-                    orientation: 'landscape',
-                    pageSize: 'LEGAL'
-                }
+                'excel',
+               
             ],
             // Set initial sorting order
             order: [[0, 'desc']],
             language: {
-            searchPlaceholder: 'Search...' // Set placeholder text for search input
-        }
+                searchPlaceholder: 'Search...' // Set placeholder text for search input
+            }
         });
 
         // Initialize multiple-select plugin
         $('#toggle_column').multipleSelect({
-            width: 240,
+            width: 200,
             onClick: function () {
                 var selectedItems = $('#toggle_column').multipleSelect("getSelects");
                 hideAllColumns();
@@ -1143,6 +1140,26 @@ if (!$result) {
             $('#deletemodal #confirm_delete_id').val(userID);
             $('#deletemodal').modal('show');
         });
+
+        // Custom filtering function which will search data in date column between two values
+        $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
+            let min = $('#min').val();
+            let max = $('#max').val();
+            let dateStr = data[1]; // Assuming date is in the second column
+
+            if ((min === "" && max === "") ||
+                (min === "" && new Date(dateStr) <= new Date(max)) ||
+                (new Date(min) <= new Date(dateStr) && max === "") ||
+                (new Date(min) <= new Date(dateStr) && new Date(dateStr) <= new Date(max))) {
+                return true;
+            }
+            return false;
+        });
+
+        // Event listener for date input changes
+        $('#min, #max').change(function () {
+            table.draw();
+        });
     });
 </script>
 
@@ -1152,7 +1169,7 @@ if (!$result) {
     <!--FOR CLOCK SCRIPT-->
     <script>
         let hrs = document.getElementById("hrs");
-        let min = document.getElementById("min");
+        let minutes = document.getElementById("minutes");
         let sec = document.getElementById("sec");
         let ampm = document.getElementById("ampm");
 
@@ -1169,55 +1186,10 @@ if (!$result) {
             }
 
             hrs.innerHTML = (hours < 10 ? "0" : '') + hours;
-            min.innerHTML = (currentTime.getMinutes() < 10 ? "0" : '') + currentTime.getMinutes();
+            minutes.innerHTML = (currentTime.getMinutes() < 10 ? "0" : '') + currentTime.getMinutes();
             sec.innerHTML = (currentTime.getSeconds() < 10 ? "0" : '') + currentTime.getSeconds();
             ampm.innerHTML = period;
         }, 1000)
-    </script>
-
-    <!-- DATE FILTER RANGE -->
-    <script>
-        let minDate, maxDate;
-        let table;
-
-        // Custom filtering function which will search data in column four between two values
-        $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
-            let min = minDate.valueAsDate;
-            let max = maxDate.valueAsDate;
-            let date = new Date(data[0]); // Assuming your date is in the first column
-
-            if (
-                (!min && !max) ||
-                (!min && date <= max) ||
-                (min <= date && !max) ||
-                (min <= date && date <= max)
-            ) {
-                return true;
-            }
-            return false;
-        });
-
-        // Create date inputs
-        minDate = document.getElementById('min');
-        maxDate = document.getElementById('max');
-
-        // Function to initialize DataTable
-        function initializeDataTable() {
-
-
-            // Initialize DataTable
-            table = $('#datatables').DataTable();
-
-            // Refilter the table
-            document.querySelectorAll('#min, #max').forEach((el) => {
-                el.addEventListener('change', () => table.draw());
-            });
-        }
-
-        // Initialize DataTable on document ready
-        $(document).ready(function () {
-            initializeDataTable();
-        });
     </script>
 
 

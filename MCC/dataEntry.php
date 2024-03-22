@@ -775,7 +775,7 @@ if (isset ($_POST['submit'])) {
             /* Change the color of the line */
             position: absolute;
 
-            left: 1001px;
+            left: 1011px;
             /* Position the line in the center horizontally */
             transform: translateX(-50%);
             /* Adjusts the position to the center */
@@ -869,7 +869,7 @@ if (isset ($_POST['submit'])) {
 
 
         .xbox1 {
-        width: 40%;
+        width: 50%;
         height: 190px;
         padding: 10px;
         padding-left: 10px;
@@ -881,7 +881,7 @@ if (isset ($_POST['submit'])) {
         
         }
         .xbox2 {
-        width: 40%;
+        width: 30%;
         height: 190px;
         padding: 10px;
         padding-left: 10px;
@@ -893,7 +893,7 @@ if (isset ($_POST['submit'])) {
         
         }
         .xbox3 {
-        width: 40%;
+        width: 30%;
         height: 190px;
         padding: 10px;
         padding-left: 10px;
@@ -926,7 +926,7 @@ if (isset ($_POST['submit'])) {
         .xbox6 {
         margin-top:20px;
         width: 820px;
-        height: 500px;
+        height: 510px;
         text-align: center;
         border-radius: 20px;
         margin-bottom: 20px;
@@ -934,7 +934,7 @@ if (isset ($_POST['submit'])) {
         .xbox7 {
         margin-top: 20px;
         width: 100%;
-        height: 500px;
+        height: 510px;
         text-align: center;
         border-radius: 20px;
         margin-bottom: 20px;
@@ -942,7 +942,7 @@ if (isset ($_POST['submit'])) {
         .xbox8 {
         margin-top:20px;
         width: 820px;
-        height: 500px;
+        height: 515px;
         text-align: center;
         border-radius: 20px;
         margin-bottom: 20px;
@@ -961,7 +961,7 @@ if (isset ($_POST['submit'])) {
         background-size: cover; /* Ensures the background image covers the entire box */
         background-repeat: no-repeat; /* Prevents the background image from repeating */
         background-position: center; /* Centers the background image */
-        background-size: 140px;
+        background-size: 100px;
         background-color: white;
         }
 
@@ -1005,6 +1005,16 @@ if (isset ($_POST['submit'])) {
             margin-top: 10px;
 
         }
+        .filterfieldMonth{
+            
+            width: 150px;
+            height: 30px;
+            margin-left: 2%;
+            background-color: white;
+            border-color: #86b7fe;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
 
          /* Style for individual items */
          .item {
@@ -1016,7 +1026,7 @@ if (isset ($_POST['submit'])) {
         
      
 
-        #piechart,#yieldChart{
+        #piechart{
             margin-left:50px;
             padding-right: 20px;
             width: 100%;
@@ -1069,21 +1079,28 @@ if (isset ($_POST['submit'])) {
 
             <!--MAIN CONTENT-->
             <div class="main1">
-                <header>Paint - Acetate Yield Monitoring System</header>
+                <header><h3 style="font-size:50px;">Paint - Acetate Yield Monitoring System</h3></header>
                 <div class="main2">
                     
                     <main>
                     <div class="M-container">
-                        <div class="xbox1 box1">
-                        <h5 style="">Total Drum Painted</h5>
-                        <input type="number" style="display: block; margin-top:40px; margin-left:10px; width: 200px; height: 50px; text-align: center; border: none; background-color:; font-size: 40px;">
-                    </div>
+                    <div class="xbox1 box1">
+                    <h5 style="">Total Drum Painted</h5>
+                    <label style="margin-left:2%;">From month:</label>
+                    <input type="month" style="text-align: center;" class="filterfieldMonth" id="fromMonth" name="fromMonth" autocomplete="off">
+                    <br>
+                    <label style="margin-left:20px;">To month:</label>
+                    <input type="month" style="text-align: center;" class="filterfieldMonth" id="toMonth" name="toMonth" autocomplete="off">
+                    <br>
+                    <input type="number" style="width:250px; height:50px; margin-top:10px; text-align:center; font-size:20px;" id="totalDrumOutput" readonly>
+                </div>
                         <div class="xbox2 box2">
                         <h5 style="">Data Entry</h5>
-                            <input type="number" style=" display:absolute; width:80px;height:30px; text-align:center; border:none; background-color:; margin-right:200px; margin-top:25px; font-size:25px;">
-                            <button type="button" class="btn btn-primary" style="height:62px; width:62px; border-radius:50px; margin-left:70px; margin-top:1px;" id="dataentry">
-                            <i class="fa-solid fa-plus" style="font-size:40px;"></i></button>
-                            <h6 style="">Total Entries</h6>
+                            <button type="button" class="btn btn-primary" style="height:45px; width:45px; border-radius:50px; margin-top:55px; margin-left:50px;" id="dataentry">
+                            <i class="fa-solid fa-plus" style="font-size:20px;"></i></button>
+                            <h6 style="margin-bottom:0px;">Total Entries:</h6>
+                            <input type="number" style=" width:150px;height:16px; margin-bottom:5px;text-align:center; background-color:; font-size:15px;">
+
                         </div>
                         <div class="xbox3 box3">
                         <h5 style="margin-left:12px;">Yield</h5>
@@ -1091,16 +1108,10 @@ if (isset ($_POST['submit'])) {
                         <span class="vertical-line1" style="margin-left:90px;"></span></label>
                         <br>
                         <input type="number"
-                         style="text-align: center; background-color:; height:50px; margin-left:30px; font-size: 27px; width: 40%; border: none !important; outline: none !important;"
-                         class="readonlyInput styleform" id="paintYield"
-                         min="0" step="any" name="paintYield"
-                         value="<?php echo $paintYield; ?>">
+                         style="text-align: center; background-color:; height:50px; margin-left:20px; font-size: 20px; width: 32%; border: none !important; outline: none !important;">
 
                          <input type="number"
-                         style="text-align: center; background-color:; height:50px; font-size: 27px; width: 40%;  border: none !important; outline: none !important;"
-                         class="readonlyInput styleform" id="acetateYield"
-                         min="0" step="any" name="acetateYield"
-                         value="<?php echo $acetateYield; ?>">
+                         style="text-align: center; background-color:; margin-left:40px; height:50px; font-size: 20px; width: 32%;  border: none !important; outline: none !important;">
                         </div>
                     </div>
 
@@ -1113,13 +1124,11 @@ if (isset ($_POST['submit'])) {
                         <label style="margin-left:3%;">To date:</label>
                         <input type="date" style="text-align: center;" class="filterfield" id="max" name="max" autocomplete="off">
                     </div>
-                <div class="xbox6 box6">
+                    <div class="xbox6 box6">
                     <h4>Weekly Report</h4>
                     <canvas id="weeklyChart"></canvas>
-                    <label style="margin-left:2%;">From week:</label>
-                    <input type="week" style="text-align: center;" class="filterfield3" id="min3" name="min3" autocomplete="off">
-                    <label style="margin-left:3%;">To week:</label>
-                    <input type="week" style="text-align: center;" class="filterfield3" id="max3" name="max3" autocomplete="off">
+                    <label style="margin-left:2%;">Select Month to show Weekly data:</label>
+                    <input type="month" style="text-align: center;" class="filterfield" id="selectedMonth" name="selectedMonth" autocomplete="off" required>
                 </div>
                         <!-- Data Entry modal -->
 
@@ -1411,22 +1420,21 @@ if (isset ($_POST['submit'])) {
                     
                     <h2 style="font-size:30px; font-weight: bold;"><?php echo date("l, F j, Y"); ?></h2>
                     
-                   <div class="xbox5 box5">
+                <div class="xbox5 box5">
                     <!-- FOR PIE CHART -->
                     <div class="item">
-                    <div id="piechart"></div>
+                        <div id="piechart"></div>
                     </div>
-                    
-                    </div>
+                </div>
 
                     <div class="xbox7 box7">
                         <h4>Monthly Report</h4>
                         <!-- FOR MONTHLY BAR CHART -->
                         <canvas id="yieldChart"></canvas>
                         <label style="margin-left:2%;">From date:</label>
-                        <input type="month" style="text-align: center;" class="filterfield2" id="min2" name="min2" autocomplete="off">
+                        <input type="month" style="text-align: center; margin-top:25px;" class="filterfield" id="min2" name="min2" autocomplete="off">
                         <label style="margin-left:3%;">To date:</label>
-                        <input type="month" style="text-align: center;" class="filterfield2" id="max2" name="max2" autocomplete="off">
+                        <input type="month" style="text-align: center; margin-top:25px;" class="filterfield" id="max2" name="max2" autocomplete="off">
                     
                     </div>
                 
@@ -1437,9 +1445,9 @@ if (isset ($_POST['submit'])) {
                 <!-- FOR YEARLY BAR CHART -->
                 <canvas id="yearlyChart"></canvas>
                 <label style="margin-left:2%;">From year:</label>
-                <input type="number" style="text-align: center;" class="yearfield" id="from" name="from" autocomplete="off">
+                <input type="number" style="text-align: center;" class="filterfield" id="from" name="from" autocomplete="off" placeholder="year">
                 <label style="margin-left:3%;">To year:</label>
-                <input type="number" style="text-align: center;" class="yearfield" id="to" name="to" autocomplete="off">
+                <input type="number" style="text-align: center;" class="filterfield" id="to" name="to" autocomplete="off" placeholder="year">
             </div>
             </div>
 
@@ -1553,14 +1561,14 @@ if (isset ($_POST['submit'])) {
             labels: years,
             datasets: [{
                 label: 'Total Paint Yield',
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                borderColor: 'rgba(255, 99, 132, 1)',
+                backgroundColor: 'rgba(255, 99, 132, 0.4)',
+                borderColor: 'rgba(255, 99, 132, 2)',
                 borderWidth: 1,
                 data: totalPaintYields
             }, {
                 label: 'Total Acetate Yield',
-                backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                borderColor: 'rgba(54, 162, 235, 1)',
+                backgroundColor: 'rgba(54, 162, 235, 0.4)',
+                borderColor: 'rgba(54, 162, 235, 2)',
                 borderWidth: 1,
                 data: totalAcetateYields
             }]
@@ -1576,12 +1584,12 @@ if (isset ($_POST['submit'])) {
 </script>
 
 
-<!--BAR BAR CHART FOR WEEK-->
+<!-- BAR CHART FOR WEEK -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 <script>
     // PHP to fetch data
     <?php
-    $sql = "SELECT SUM(paintYield) AS totalPaintYield, SUM(acetateYield) AS totalAcetateYield, DATE_FORMAT(date, '%x-%v') AS week_year FROM tbl_entry GROUP BY week_year";
+    $sql = "SELECT SUM(paintYield) AS totalPaintYield, SUM(acetateYield) AS totalAcetateYield, DATE_FORMAT(date, '%Y-%m-%v') AS week_year FROM tbl_entry GROUP BY week_year";
     $result = mysqli_query($con, $sql);
     $data = [];
     while ($row = mysqli_fetch_array($result)) {
@@ -1593,7 +1601,7 @@ if (isset ($_POST['submit'])) {
     var weeks = [];
     var totalPaintYields = [];
     var totalAcetateYields = [];
-    
+
     <?php foreach ($data as $row): ?>
         weeks.push('<?php echo $row['week_year']; ?>');
         totalPaintYields.push(<?php echo $row['totalPaintYield']; ?>);
@@ -1601,34 +1609,31 @@ if (isset ($_POST['submit'])) {
     <?php endforeach; ?>
 
     var ctx = document.getElementById('weeklyChart').getContext('2d');
-
     var weeklyChart;
 
     function filterData() {
-        var minDate = document.getElementById('min3').value;
-        var maxDate = document.getElementById('max3').value;
+        var selectedMonth = document.getElementById('selectedMonth').value;
         
         var filteredWeeks = [];
         var filteredPaintYields = [];
         var filteredAcetateYields = [];
-        
+
         for (var i = 0; i < weeks.length; i++) {
-            if (weeks[i] >= minDate && weeks[i] <= maxDate) {
+            if (weeks[i].startsWith(selectedMonth)) {
                 filteredWeeks.push(weeks[i]);
                 filteredPaintYields.push(totalPaintYields[i]);
                 filteredAcetateYields.push(totalAcetateYields[i]);
             }
         }
-        
+
         weeklyChart.data.labels = filteredWeeks;
         weeklyChart.data.datasets[0].data = filteredPaintYields;
         weeklyChart.data.datasets[1].data = filteredAcetateYields;
         weeklyChart.update();
     }
 
-    // Attach event listeners to date inputs to trigger filtering in real-time
-    document.getElementById('min3').addEventListener('input', filterData);
-    document.getElementById('max3').addEventListener('input', filterData);
+    // Attach event listener to month input to trigger filtering in real-time
+    document.getElementById('selectedMonth').addEventListener('change', filterData);
 
     weeklyChart = new Chart(ctx, {
         type: 'bar',
@@ -1636,14 +1641,14 @@ if (isset ($_POST['submit'])) {
             labels: weeks,
             datasets: [{
                 label: 'Total Paint Yield',
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                borderColor: 'rgba(255, 99, 132, 1)',
+                backgroundColor: 'rgba(255, 99, 132, 0.4)',
+                borderColor: 'rgba(255, 99, 132, 2)',
                 borderWidth: 1,
                 data: totalPaintYields
             }, {
                 label: 'Total Acetate Yield',
-                backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                borderColor: 'rgba(54, 162, 235, 1)',
+                backgroundColor: 'rgba(54, 162, 235, 0.4)',
+                borderColor: 'rgba(54, 162, 235, 2)',
                 borderWidth: 1,
                 data: totalAcetateYields
             }]
@@ -1658,6 +1663,51 @@ if (isset ($_POST['submit'])) {
     });
 </script>
 
+<!--TOTAL DRUM PAINTED-->
+<script>
+    // Function to fetch data from PHP
+    function fetchData() {
+        <?php
+        $sql = "SELECT SUM(quantity) AS totalPaintDrum, DATE_FORMAT(date, '%Y-%m') AS month_year FROM tbl_entry GROUP BY month_year";
+        $result = mysqli_query($con, $sql);
+        $data = [];
+        while ($row = mysqli_fetch_array($result)) {
+            $data[] = $row;
+        }
+        ?>
+
+        var drumData = <?php echo json_encode($data); ?>;
+        return drumData;
+    }
+
+    // Function to calculate total drum count for the selected range of months
+    function calculateTotalDrum(data, fromMonth, toMonth) {
+        var totalDrum = 0;
+        for (var i = 0; i < data.length; i++) {
+            if (data[i].month_year >= fromMonth && data[i].month_year <= toMonth) {
+                totalDrum += parseInt(data[i].totalPaintDrum);
+            }
+        }
+        return totalDrum;
+    }
+
+    // Function to update total drum count
+    function updateTotalDrum() {
+        var fromMonth = document.getElementById('fromMonth').value;
+        var toMonth = document.getElementById('toMonth').value;
+        var drumData = fetchData(); // Fetch data from PHP
+
+        var totalDrum = calculateTotalDrum(drumData, fromMonth, toMonth);
+        document.getElementById('totalDrumOutput').value = totalDrum;
+    }
+
+    // Attach event listeners to month inputs to trigger updateTotalDrum function
+    document.getElementById('fromMonth').addEventListener('input', updateTotalDrum);
+    document.getElementById('toMonth').addEventListener('input', updateTotalDrum);
+
+    // Initial call to updateTotalDrum to display initial total drum count
+    updateTotalDrum();
+</script>
 
 <!--BAR CHART FOR MONTH-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
@@ -1719,14 +1769,14 @@ if (isset ($_POST['submit'])) {
             labels: months,
             datasets: [{
                 label: 'Total Paint Yield',
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                borderColor: 'rgba(255, 99, 132, 1)',
+                backgroundColor: 'rgba(255, 99, 132, 0.4)',
+                borderColor: 'rgba(255, 99, 132, 2)',
                 borderWidth: 1,
                 data: totalPaintYields
             }, {
                 label: 'Total Acetate Yield',
-                backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                borderColor: 'rgba(54, 162, 235, 1)',
+                backgroundColor: 'rgba(54, 162, 235, 0.4)',
+                borderColor: 'rgba(54, 162, 235, 2)',
                 borderWidth: 1,
                 data: totalAcetateYields
             }]
@@ -1745,31 +1795,47 @@ if (isset ($_POST['submit'])) {
 
 <!--FOR PIE CHART-->
 <script type="text/javascript">
-                    google.charts.load('current', { 'packages': ['corechart'] });
-                    google.charts.setOnLoadCallback(drawCharts);
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawCharts);
 
-                    function drawCharts() {
-                        drawPieChart();
-                    }
+    function drawCharts() {
+        drawPieChart();
+    }
 
-                    function drawPieChart() {
-                        var data = google.visualization.arrayToDataTable([
-                            ['Category', 'Yield'],
-                            ['Nippon', 25],
-                            ['Treasure Island', 10],
-                            ['Inkote', 15],
-                            ['Century', 20]
-                        ]);
+    // PHP to fetch data
+    <?php
+    $sql = "SELECT
+    paint.paint_color,
+    SUM(entry.totalPliter) AS totalPliter
+    FROM tbl_entry AS entry
+    LEFT JOIN tbl_paint AS paint ON entry.paintID = paint.paintID
+    GROUP BY paint.paint_color";
 
-                        var options = {
-                            title: 'Paint and Acetate Yield by Supplier'
-                        };
+    $result = mysqli_query($con, $sql);
+    $data = [];
+    while ($row = mysqli_fetch_array($result)) {
+        $data[] = $row;
+    }
+    ?>
 
-                        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    function drawPieChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Category', 'PaintLiters'],
+            <?php foreach ($data as $row): ?>
+                ['<?php echo $row['paint_color']; ?>', <?php echo $row['totalPliter']; ?>],
+            <?php endforeach; ?>
+        ]);
 
-                        chart.draw(data, options);
-                    }
+        var options = {
+            title: 'Total usage of Paint Color by liter'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+    }
 </script>
+
 
 <!-- FOR AREA CHART / line chart SCRIPT -->
 <script>

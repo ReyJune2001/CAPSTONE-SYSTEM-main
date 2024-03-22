@@ -41,6 +41,8 @@ if (isset($_GET['data-entry-id'])) {
             LEFT JOIN tbl_customer AS customer ON entry.customerID = customer.customerID
             WHERE entry.EntryID = $id";
 
+           
+
     $result = mysqli_query($con, $sql);
 
     // Check if the query was successful
